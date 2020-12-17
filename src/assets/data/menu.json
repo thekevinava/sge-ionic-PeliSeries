@@ -12,11 +12,11 @@
     {
         "icon": "flashlight-outline",
         "name": "Horror",
-        "redirectTo": "/horror"
+        "redirectTo": "/test2"
     },
     {
         "icon": "flame-outline",
         "name": "Acción",
-        "redirectTo": "/action"
+        "redirectTo": "/test"
     }
 ]

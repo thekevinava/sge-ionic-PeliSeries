@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let f of items">
+
+    <ion-card-content>
+      <ion-card-title>{{f.title}}</ion-card-title>
+      <div>
+        {{f.sinopsis}}
+        <ion-img [src]="f.images[0]"></ion-img>
+     </div>
+    </ion-card-content>
+
+    </ion-card>  
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+    <ion-infinite-scroll-content  
+      loadingSpinner="bubbles"  
+      loadingText="Cargando más series...">  
+    </ion-infinite-scroll-content>  
+  </ion-infinite-scroll>  
+</ion-content>

@@ -1,0 +1,89 @@
+[    {
+        "title": "The Blacklist",
+        "year": "2013",
+        "sinopsis": "Una nueva perfiladora del FBI, Elizabeth Keen, ve su vida tambalearse cuando un misterioso criminal, Raymond Reddington, quien ha evitado ser capturado durante décadas, se entrega e insiste en hablar sólo con ella.",
+        "seasons": "8",
+        "episodes": "154",
+        "categories": [
+            "Drama",
+            "Crimen",
+            "Misterio"
+        ],
+        "images": [
+            "/assets/images/the-blacklist/image1.png",
+            "/assets/images/the-blacklist/image2.png",
+            "/assets/images/the-blacklist/image3.png"
+        ],
+        "rating": "8.0"
+    },
+    {
+        "title": "Arrow",
+        "year": "2012",
+        "sinopsis": "El malcriado multimillonario playboy Oliver Queen desaparece cuando su yate se pierde en el mar y se le presume muerto. Regresa cinco años después, un hombre nuevo, decidido a limpiar la ciudad como un vigilante encapuchado armado con un arco.",
+        "seasons": "8",
+        "episodes": "170",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Crimen"
+        ],
+        "images": [
+            "/assets/images/arrow/image1.png",
+            "/assets/images/arrow/image2.png",
+            "/assets/images/arrow/image3.png"
+        ],
+        "rating": "7.5"
+    },
+    {
+        "title": "Suits",
+        "year": "2011",
+        "sinopsis": "A la fuga después de que un negocio de drogas saliera mal, Mike Ross, un hombre brillante a pesar de no haber acabado sus estudios, se encuentra trabajando con Harvey Specter, uno de los mejores abogados de la ciudad de Nueva York.",
+        "seasons": "9",
+        "episodes": "134",
+        "categories": [
+            "Comedia",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/suits/image1.png",
+            "/assets/images/suits/image2.png",
+            "/assets/images/suits/image3.png"
+        ],
+        "rating": "8.5"
+    },
+    {
+        "title": "Big Mouth",
+        "year": "2017",
+        "sinopsis": "Unos amigos adolescentes ven sus vidas tambalearse a través de las maravillas y los horrores de la pubertad.",
+        "seasons": "4",
+        "episodes": "43",
+        "categories": [
+            "Animación",
+            "Comedia",
+            "Romance"
+        ],
+        "images": [
+            "/assets/images/big-mouth/image1.png",
+            "/assets/images/big-mouth/image2.png",
+            "/assets/images/big-mouth/image3.png"
+        ],
+        "rating": "8.0"
+    },
+    {
+        "title": "Lucifer",
+        "year": "2016",
+        "sinopsis": "Lucifer Morningstar ha decidido que está harto de ser un sirviente obediente en el Infierno y decide pasar un tiempo en la Tierra para entender mejor a la humanidad. Se instala en Los Ángeles, la ciudad de los ángeles.",
+        "seasons": "5",
+        "episodes": "93",
+        "categories": [
+            "Crimen",
+            "Drama",
+            "Fantasía"
+        ],
+        "images": [
+            "/assets/images/lucifer/image1.png",
+            "/assets/images/lucifer/image2.png",
+            "/assets/images/lucifer/image3.png"
+        ],
+        "rating": "8.2"
+    }]
