@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "skull-outline",
+        "name": "Inicio",
+        "redirectTo": "/home"
+    },
+    {
+        "icon": "happy-outline",
+        "name": "Drama",
+        "redirectTo": "/drama"
+    },
+    {
+        "icon": "flashlight-outline",
+        "name": "Horror",
+        "redirectTo": "/horror"
+    },
+    {
+        "icon": "flame-outline",
+        "name": "Acción",
+        "redirectTo": "/action"
+    }
+]
