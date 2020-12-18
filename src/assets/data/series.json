@@ -1,4 +1,5 @@
-[    {
+[    
+    {
         "title": "The Blacklist",
         "year": "2013",
         "sinopsis": "Una nueva perfiladora del FBI, Elizabeth Keen, ve su vida tambalearse cuando un misterioso criminal, Raymond Reddington, quien ha evitado ser capturado durante décadas, se entrega e insiste en hablar sólo con ella.",
@@ -86,4 +87,76 @@
             "/assets/images/lucifer/image3.png"
         ],
         "rating": "8.2"
-    }]
+    },
+    {
+        "title": "Supergirl",
+        "year": "2015",
+        "sinopsis": "Las aventuras de la prima de Superman en su propia carrera como superheroína.",
+        "seasons": "5",
+        "episodes": "126",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/supergirl/image1.png",
+            "/assets/images/supergirl/image2.png",
+            "/assets/images/supergirl/image3.png"
+        ],
+        "rating": "6.3"
+    },
+    {
+        "title": "The Flash",
+        "year": "2014",
+        "sinopsis": "Tras ser alcanzado por un rayo, Barry Allen despierta de su estado de coma para descubrir que se le ha dado el poder de la súper velocidad, convirtiéndose en Flash, luchando contra el crimen en Central City.",
+        "seasons": "6",
+        "episodes": "138",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/the-flash/image1.png",
+            "/assets/images/the-flash/image2.png",
+            "/assets/images/the-flash/image3.png"
+        ],
+        "rating": "7.7"
+    },
+    {
+        "title": "Vikingos",
+        "year": "2013",
+        "sinopsis": "Vikings nos transporta al mundo brutal y misterioso de Ragnar Lothbrok, un guerrero vikingo y granjero que anhela explorar, y asaltar, las distantes orillas al otro lado del océano.",
+        "seasons": "6",
+        "episodes": "93",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/vikingos/image1.png",
+            "/assets/images/vikingos/image2.png",
+            "/assets/images/vikingos/image3.png"
+        ],
+        "rating": "8.5"
+    },
+    {
+        "title": "Friends",
+        "year": "1994",
+        "sinopsis": "Sigue la vida personal y profesional de seis amigos de veinte o treinta-y-tantos en Manhattan.",
+        "seasons": "10",
+        "episodes": "235",
+        "categories": [
+            "Comedia",
+            "Romance"
+        ],
+        "images": [
+            "/assets/images/friends/image1.png",
+            "/assets/images/friends/image2.png",
+            "/assets/images/friends/image3.png"
+        ],
+        "rating": "8.9"
+    }
+]

@@ -26,6 +26,12 @@ export class HomePage implements OnInit {
       for (let i = 0; i < res.length; i++) {
         this.series.push(res[i]);
       }
+      /* Ordeno las series de más recientes a más antiguas */
+      this.series.sort((a,b): any => {
+        if (a['year'] < b['year']) return 1;
+        if (a['year'] > b['year']) return -1;
+        return 0;
+      });
       this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en home.page.html
     });
   }

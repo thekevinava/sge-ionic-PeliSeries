@@ -12,7 +12,7 @@
     {
         "icon": "flashlight-outline",
         "name": "Horror",
-        "redirectTo": "/test2"
+        "redirectTo": "/horror"
     },
     {
         "icon": "flame-outline",
