@@ -6,6 +6,11 @@
     },
     {
         "icon": "happy-outline",
+        "name": "Categorías",
+        "redirectTo": "/categories"
+    },
+    {
+        "icon": "happy-outline",
         "name": "Drama",
         "redirectTo": "/drama"
     },
@@ -17,6 +22,6 @@
     {
         "icon": "flame-outline",
         "name": "Acción",
-        "redirectTo": "/test"
+        "redirectTo": "/action"
     }
 ]

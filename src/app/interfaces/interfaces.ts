@@ -14,3 +14,8 @@ export interface Serie {
     images: object;
     rating: string;
 }
+
+export interface Category {
+    slug: string;
+    name: string;
+}

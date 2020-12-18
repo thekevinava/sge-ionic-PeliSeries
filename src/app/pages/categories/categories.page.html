@@ -1,0 +1,22 @@
+<app-header titulo="Categorías"></app-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let s of categorias" routerLink="/categories/{{s.slug}}">
+            <ion-avatar slot="start">
+                <ion-img [src]="s.image"></ion-img>
+            </ion-avatar>
+            <ion-label>
+                <h3>
+                    {{ s.title }}
+                </h3>
+                <p>
+                    {{ s.title }}
+                </p>
+                <p>
+                    {{ s.title.para2 }}
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

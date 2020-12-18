@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ActionPageRoutingModule } from './action-routing.module';
+import { CategoriesPageRoutingModule } from './categories-routing.module';
 
-import { ActionPage } from './action.page';
+import { CategoriesPage } from './categories.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ActionPageRoutingModule,
+    CategoriesPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ActionPage]
+  declarations: [CategoriesPage]
 })
-export class ActionPageModule {}
+export class CategoriesPageModule {}

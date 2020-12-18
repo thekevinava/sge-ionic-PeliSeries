@@ -10,17 +10,15 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomePage implements OnInit {
 
-  componentes: Observable<Componente[]>;
 
   /* Variables para el Infinite Scroll*/
-  series= [];
+  series = [];
   items = [];
   cuenta: number = 0;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.componentes = this.dataService.getMenuOpts();
     /* leo el JSON de las series y lo guardo directamente en un array */
     this.dataService.getSerie().subscribe(res => {
       for (let i = 0; i < res.length; i++) {

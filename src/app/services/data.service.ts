@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Componente, Serie } from '../interfaces/interfaces';
+import { Category, Componente, Serie } from '../interfaces/interfaces';
 
 
 @Injectable({
@@ -16,6 +16,10 @@ export class DataService {
 
   getSerie() {
     return this.http.get<Serie[]>('/assets/data/series.json')
+  }
+
+  getCategory() {
+    return this.http.get<Category[]>('/assets/data/categorias.json')
   }
   
 }

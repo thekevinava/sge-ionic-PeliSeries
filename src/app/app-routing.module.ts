@@ -8,25 +8,17 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'drama',
-    loadChildren: () => import('./pages/drama/drama.module').then( m => m.DramaPageModule)
-  },
-  {
-    path: 'action',
-    loadChildren: () => import('./pages/action/action.module').then( m => m.ActionPageModule)
-  },
-  {
-    path: 'horror',
-    loadChildren: () => import('./pages/horror/horror.module').then( m => m.HorrorPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  // {
+  //   path: 'category',
+  //   loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+  // },
   {
-    path: 'serie',
-    loadChildren: () => import('./pages/serie/serie.module').then( m => m.SeriePageModule)
-  }
+    path: 'categories',
+    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
+  },
 ];
 
 @NgModule({
