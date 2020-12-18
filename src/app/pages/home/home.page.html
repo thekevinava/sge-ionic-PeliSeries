@@ -16,16 +16,18 @@
           <ion-card-title color="warning">{{ s.title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-chip *ngFor="let cat of s.categories" color="success">{{ cat }}</ion-chip>
+          <ng-container *ngFor="let cat of s.categories;">
+            <ion-chip *ngIf="mismaCategoria(cat)" routerLink="/categories/{{slug}}" color="success">
+              {{ cat }}
+            </ion-chip>
+          </ng-container>
         </ion-card-content>
       </ion-card>
     </ion-item>
   </ion-list>
-  
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">  
-    <ion-infinite-scroll-content  
-      loadingSpinner="bubbles"  
-      loadingText="Cargando más series...">  
-    </ion-infinite-scroll-content>  
-  </ion-infinite-scroll>  
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más series...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

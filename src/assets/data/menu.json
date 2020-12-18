@@ -5,23 +5,8 @@
         "redirectTo": "/home"
     },
     {
-        "icon": "happy-outline",
-        "name": "Categorías",
-        "redirectTo": "/categories"
-    },
-    {
-        "icon": "happy-outline",
-        "name": "Drama",
-        "redirectTo": "/drama"
-    },
-    {
-        "icon": "flashlight-outline",
-        "name": "Horror",
-        "redirectTo": "/horror"
-    },
-    {
-        "icon": "flame-outline",
-        "name": "Acción",
-        "redirectTo": "/action"
+        "icon": "information-circle-outline",
+        "name": "About",
+        "redirectTo": "/about"
     }
 ]

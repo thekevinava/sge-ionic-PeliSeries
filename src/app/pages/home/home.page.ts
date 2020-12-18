@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Componente, Serie } from 'src/app/interfaces/interfaces';
+import { Category, Componente, Serie } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -9,16 +9,22 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  slug:any;
 
   /* Variables para el Infinite Scroll*/
   series = [];
   items = [];
+  categorias = [];
+
   cuenta: number = 0;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getCategory().subscribe(res => {
+      this.categorias = res;
+    });
+
     /* leo el JSON de las series y lo guardo directamente en un array */
     this.dataService.getSerie().subscribe(res => {
       for (let i = 0; i < res.length; i++) {
@@ -49,6 +55,12 @@ export class HomePage implements OnInit {
       if (this.series.length === this.cuenta) return; // Si he completado la carga de datos, no añade más información innecesaria
       this.items.push(this.series[this.cuenta]);
       this.cuenta++;
+    }
+  }
+
+  mismaCategoria(cat) {
+    for (let i = 0; i < this.categorias.length; i++) {
+      if (cat == this.categorias[i].name) return this.slug = this.categorias[i].slug;
     }
   }
 

@@ -1,15 +1,27 @@
-<ion-menu side="end" menuId="menuPrincipal" contentId="principal">
+<ion-menu menuId="menuPrincipal" side="end" contentId="principal">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>Menu Principal</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list>
-      <ion-menu-toggle *ngFor="let c of componentes | async">
-        <ion-item [routerLink]="c.redirectTo" detail>
+    <ion-list lines="none">
+      <ion-list-header>Pages</ion-list-header>
+      <ion-menu-toggle autoHide="false" *ngFor="let c of componentes | async">
+        <ion-item [routerLink]="c.redirectTo" routerLinkActive="selected" detail>
           <ion-icon slot="start" [name]="c.icon"></ion-icon>
           <ion-label>{{ c.name }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+    <ion-list lines="none">
+      <ion-list-header>Categories</ion-list-header>
+      <ion-menu-toggle autoHide="false" *ngFor="let d of categorias | async">
+        <ion-item [routerLink]="'categories/'+d.slug" routerLinkActive="selected" detail>
+          <ion-avatar slot="start">
+            <ion-img [src]="d.image"></ion-img>
+          </ion-avatar>
+          <ion-label>{{ d.name }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
     </ion-list>
