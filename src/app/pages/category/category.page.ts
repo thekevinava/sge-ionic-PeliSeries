@@ -9,6 +9,10 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CategoryPage implements OnInit {
   categoria: any;
+  series = [];
+  categorias = [];
+
+  seriesFinal = [];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
@@ -21,6 +25,43 @@ export class CategoryPage implements OnInit {
         }
       }
     });
+
+    this.dataService.getCategory().subscribe(res => {
+      this.categorias = res;
+    });
+
+    this.dataService.getSerie().subscribe(res => {
+      for (let i = 0; i<res.length;i++) {
+        this.series.push(res[i]);
+      }
+
+      for (let j = 0; j<this.series.length;j++) {
+        console.log("1")
+        for (let k = 0; k<this.series[j].categories.length;k++) {
+          console.log(this.series[j].categories[k], " + ",this.categoria.name)
+          if(this.series[j].categories[k] === this.categoria.name) {
+            this.seriesFinal.push(this.series[j]);
+          }
+        }
+      }
+    });
+
+    this.todasSeries();
+
+    
+  }
+
+  todasSeries() {
+    console.log(this.series)
+    // for (let j = 0; j<this.series.length;j++) {
+    //   console.log("1")
+    //   for (let k = 0; k<this.series[j].categories.length;k++) {
+    //     console.log(this.series[j].categories[k], " + ",this.categoria.name)
+    //     if(this.series[j].categories[k] === this.categoria.name) {
+    //       this.seriesFinal.push(this.series[j]);
+    //     }
+    //   }
+    // }
   }
 
 }
