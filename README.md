@@ -33,6 +33,7 @@
 
 - Poder loguearse / registrarse.
 - Poder agregar / eliminar las series desde la propia aplicación.
+- Traducciones
 
 
 ## Algunas imágenes

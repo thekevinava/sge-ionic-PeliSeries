@@ -8,7 +8,7 @@
             </ion-card-header>
             <ion-card-content>
                 <ng-container *ngFor="let cat of s.categories;">
-                    <ion-chip *ngIf="mismaCategoria(cat)" routerLink="/categories/{{slug}}" color="success">
+                    <ion-chip *ngIf="mismaCategoria(cat)" routerLink="/categories/{{slug}}" color="danger">
                         {{ cat }}
                     </ion-chip>
                 </ng-container>
