@@ -17,7 +17,6 @@ export class CategoryPage implements OnInit {
   seriesFinal = [];
 
   cuenta: number = 0;
-  // items = [];
 
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }

@@ -13,6 +13,7 @@ export interface Serie {
     categories: object;
     images: object;
     rating: string;
+    slug: string;
 }
 
 export interface Category {

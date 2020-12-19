@@ -1,5 +1,6 @@
 [    
     {
+        "slug": "the-blacklist",
         "title": "The Blacklist",
         "year": "2013",
         "sinopsis": "Una nueva perfiladora del FBI, Elizabeth Keen, ve su vida tambalearse cuando un misterioso criminal, Raymond Reddington, quien ha evitado ser capturado durante décadas, se entrega e insiste en hablar sólo con ella.",
@@ -18,6 +19,7 @@
         "rating": "8.0"
     },
     {
+        "slug": "arrow",
         "title": "Arrow",
         "year": "2012",
         "sinopsis": "El malcriado multimillonario playboy Oliver Queen desaparece cuando su yate se pierde en el mar y se le presume muerto. Regresa cinco años después, un hombre nuevo, decidido a limpiar la ciudad como un vigilante encapuchado armado con un arco.",
@@ -36,6 +38,7 @@
         "rating": "7.5"
     },
     {
+        "slug": "suits",
         "title": "Suits",
         "year": "2011",
         "sinopsis": "A la fuga después de que un negocio de drogas saliera mal, Mike Ross, un hombre brillante a pesar de no haber acabado sus estudios, se encuentra trabajando con Harvey Specter, uno de los mejores abogados de la ciudad de Nueva York.",
@@ -53,6 +56,7 @@
         "rating": "8.5"
     },
     {
+        "slug": "big-mouth",
         "title": "Big Mouth",
         "year": "2017",
         "sinopsis": "Unos amigos adolescentes ven sus vidas tambalearse a través de las maravillas y los horrores de la pubertad.",
@@ -71,6 +75,7 @@
         "rating": "8.0"
     },
     {
+        "slug": "lucifer",
         "title": "Lucifer",
         "year": "2016",
         "sinopsis": "Lucifer Morningstar ha decidido que está harto de ser un sirviente obediente en el Infierno y decide pasar un tiempo en la Tierra para entender mejor a la humanidad. Se instala en Los Ángeles, la ciudad de los ángeles.",
@@ -89,6 +94,7 @@
         "rating": "8.2"
     },
     {
+        "slug": "supergirl",
         "title": "Supergirl",
         "year": "2015",
         "sinopsis": "Las aventuras de la prima de Superman en su propia carrera como superheroína.",
@@ -107,6 +113,7 @@
         "rating": "6.3"
     },
     {
+        "slug": "the-flash",
         "title": "The Flash",
         "year": "2014",
         "sinopsis": "Tras ser alcanzado por un rayo, Barry Allen despierta de su estado de coma para descubrir que se le ha dado el poder de la súper velocidad, convirtiéndose en Flash, luchando contra el crimen en Central City.",
@@ -125,6 +132,7 @@
         "rating": "7.7"
     },
     {
+        "slug": "vikings",
         "title": "Vikingos",
         "year": "2013",
         "sinopsis": "Vikings nos transporta al mundo brutal y misterioso de Ragnar Lothbrok, un guerrero vikingo y granjero que anhela explorar, y asaltar, las distantes orillas al otro lado del océano.",
@@ -143,6 +151,7 @@
         "rating": "8.5"
     },
     {
+        "slug": "friends",
         "title": "Friends",
         "year": "1994",
         "sinopsis": "Sigue la vida personal y profesional de seis amigos de veinte o treinta-y-tantos en Manhattan.",

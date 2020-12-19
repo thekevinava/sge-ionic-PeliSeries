@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   },
+  {
+    path: 'series',
+    loadChildren: () => import('./pages/series/series.module').then( m => m.SeriesPageModule)
+  },
+  // {
+  //   path: 'serie',
+  //   loadChildren: () => import('./pages/serie/serie.module').then( m => m.SeriePageModule)
+  // },
 ];
 
 @NgModule({
