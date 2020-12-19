@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
   /* Leo los datos del home.page.html respecto al Infinite Scroll */
   loadData(event) {
     setTimeout(() => {
-      console.log('Done'); 
+      console.log('Loaded'); 
       this.addMoreItems(); // Cargo más datos si existen
       event.target.complete(); // Completo la carga de datos
       if (this.series.length === this.cuenta) event.target.disabled = true; // Si he completado la carga, desactivo el Infinite Scroll
@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
 
   mismaCategoria(cat) {
     for (let i = 0; i < this.categorias.length; i++) {
-      if (cat == this.categorias[i].name) return this.slug = this.categorias[i].slug;
+      if (cat == this.categorias[i].name) return this.slug = this.categorias[i].slug; // Si la categoría es la misma, devuelvo el slug de la categoría requerida
     }
   }
 

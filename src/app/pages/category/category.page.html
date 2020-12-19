@@ -1,8 +1,23 @@
 <app-header titulo="{{categoria?.name}}"></app-header>
 <ion-content>
-    <ion-label>{{categoria?.name}} {{categoria?.slug}} works</ion-label>
-
     <ion-item *ngFor="let s of seriesFinal">
-        {{s}}
+        <ion-card style="width: 100%">
+            <ion-img [src]="s.images[0]"></ion-img>
+            <ion-card-header>
+                <ion-card-title color="warning">{{ s.title }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ng-container *ngFor="let cat of s.categories;">
+                    <ion-chip *ngIf="mismaCategoria(cat)" routerLink="/categories/{{slug}}" color="success">
+                        {{ cat }}
+                    </ion-chip>
+                </ng-container>
+            </ion-card-content>
+        </ion-card>
     </ion-item>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más series...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
