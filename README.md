@@ -11,6 +11,7 @@
 - Infinite Scroll que muestran las series de 4 en 4.
 - Cada chip de categoría te redirecciona a la categoría requerida.
 - Cada categoría es una redirección a la misma página, pero con diferente contenido aunque tenga diferentes rutas.
+- Cada categoría existente se muestra automáticamente en el menú principal.
 
 
 ## Próximamente:
