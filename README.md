@@ -5,6 +5,15 @@
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/thekevinava/sge-ionic-PeliSeries">
 </p>
 
+## Instalación:
+
+* [Descargar el instalador](https://nodejs.org/) de Node LTS.
+* Instalar ionic CLI globalmente: `npm install -g ionic`
+* Clonar este repositorio: `git clone https://github.com/thekevinava/sge-ionic-PeliSeries.git`.
+* Ejecutar `npm install` en el terminal en la carpeta principal del proyecto.
+* Ejecutar `ionic serve` en el terminal en la carpeta principal del proyecto.
+* Listo! Ya tienes funcionando mi aplicaciión.
+
 ## Funciones:
 
 - Series ordenadas por fecha (más recientes primero).
