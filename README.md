@@ -2,7 +2,6 @@
 <p>
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/thekevinava/sge-ionic-PeliSeries">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/thekevinava/sge-ionic-PeliSeries">
-    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/thekevinava/sge-ionic-PeliSeries">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/thekevinava/sge-ionic-PeliSeries">
 </p>
 
@@ -27,3 +26,6 @@
 
 
 ## Algunas imágenes
+![Home](/src/assets/images/preview/home.png)
+![Menu](/src/assets/images/preview/menu.png)
+![Categoría](/src/assets/images/preview/category.png)
