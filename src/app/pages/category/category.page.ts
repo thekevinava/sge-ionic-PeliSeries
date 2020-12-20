@@ -8,43 +8,79 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./category.page.scss'],
 })
 export class CategoryPage implements OnInit {
-  slug: any;
-  categoria: any;
-  categorias = [];
+  slug: any; // Slug de la categoría mostrada en el card Serie
+  categoria: any; // Los datos de la categoría a mostrar
+  categorias: any; // Listado de categorías
+  // categorias = [];
   
-  series = [];
-  seriesCategoria = [];
-  seriesFinal = [];
+  // series = [];
+  series: any; // Listado de series
+  seriesCategoria = []; // Listados de series de la categoria requerida
+  seriesFinal = []; // Listado de series a mostrar con Infinite Scroll
 
   cuenta: number = 0;
 
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+    this.categorias = [];
+    this.series = [];
+  }
 
   ngOnInit() {
     /* Recojo las categorías del JSON */
-    this.dataService.getCategory().subscribe((data: any) => {
-      const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module */
-      this.categorias = data; // Guardo las categorías
+    // this.dataService.getCategory().subscribe((data: any) => {
+    //   const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module 
+    //   this.categorias = data; // Guardo las categorías
 
-      if (data) {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].slug === categorySlug) return this.categoria = data[i]; // Guardo los datos de la categoría requerida
+    //   if (data) {
+    //     for (let i = 0; i < data.length; i++) {
+    //       if (data[i].slug === categorySlug) return this.categoria = data[i]; // Guardo los datos de la categoría requerida
+    //     }
+    //   }
+    // });
+
+    /* Recojo las categorías del JSON */
+    this.dataService.getCategorias().subscribe(res => {
+      const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module
+      this.categorias = res; // Guardo las categorías
+
+      if (res) {
+        for (let i = 0; i<this.categorias.length;i++) {
+          if (this.categorias[i].slug === categorySlug) return this.categoria = this.categorias[i]; // Guardo los datos de la categoría requerida
         }
       }
     });
 
 
     /* Recojo las series del JSON*/
-    this.dataService.getSerie().subscribe(res => {
-      for (let i = 0; i<res.length;i++) {
-        this.series.push(res[i]); // Primero recojo las series
-      }
+    // this.dataService.getSerie().subscribe(res => {
+    //   for (let i = 0; i<res.length;i++) {
+    //     this.series.push(res[i]); // Primero recojo las series
+    //   }
 
-      for (let j = 0; j<this.series.length;j++) {
-        for (let k = 0; k<this.series[j].categories.length;k++) {
-          if(this.series[j].categories[k] === this.categoria.name) {
-            this.seriesCategoria.push(this.series[j]); // Recojo las series que tengan la misma categoria
+    //   for (let j = 0; j<this.series.length;j++) {
+    //     for (let k = 0; k<this.series[j].categories.length;k++) {
+    //       if(this.series[j].categories[k] === this.categoria.name) {
+    //         this.seriesCategoria.push(this.series[j]); // Recojo las series que tengan la misma categoria
+    //       }
+    //     }
+    //   }
+    //   /* Ordeno las series de más recientes a más antiguas */
+    //   this.seriesCategoria.sort((a,b): any => {
+    //     if (a['year'] < b['year']) return 1;
+    //     if (a['year'] > b['year']) return -1;
+    //     return 0;
+    //   });
+    //   this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en home.page.html
+    // });
+
+    /* Recojo las series del JSON*/
+    this.dataService.getSeries().subscribe(res => {
+      this.series = res; // Primero recojo las series
+      for (let i = 0; i<this.series.length;i++) {
+        for (let j = 0; j<this.series[i].categories.length;j++){
+          if (this.series[i].categories[j] == this.categoria.name) {
+            this.seriesCategoria.push(this.series[i]); // Recojo las series que tengan la misma categoria
           }
         }
       }
@@ -54,8 +90,8 @@ export class CategoryPage implements OnInit {
         if (a['year'] > b['year']) return -1;
         return 0;
       });
-      this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en home.page.html
-    });    
+      this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en category.page.html
+    });
   }
 
     /* Leo los datos del home.page.html respecto al Infinite Scroll */

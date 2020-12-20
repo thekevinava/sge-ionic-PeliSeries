@@ -1,8 +1,12 @@
 {
   "name": "PeliSeries",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "TheKevinava",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thekevinava/sge-ionic-PeliSeries.git"
+  },
+  "homepage": "https://github.com/thekevinava",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -21,3 +21,11 @@ export interface Category {
     name: string;
     image: string;
 }
+
+export interface Comentarios {
+    slug: string;
+    email: string;
+    puntuacion: string;
+    comentario: string;
+    fecha: string;
+}

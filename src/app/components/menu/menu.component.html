@@ -8,7 +8,8 @@
   <ion-content>
     <ion-list lines="none">
       <ion-list-header>Pages</ion-list-header>
-      <ion-menu-toggle autoHide="false" *ngFor="let c of componentes | async">
+      <ion-menu-toggle autoHide="false" *ngFor="let c of componentes">
+      <!-- <ion-menu-toggle autoHide="false" *ngFor="let c of componentes | async"> -->
         <ion-item [routerLink]="c.redirectTo" routerLinkActive="selected" detail>
           <ion-icon slot="start" [name]="c.icon"></ion-icon>
           <ion-label>{{ c.name }}</ion-label>
@@ -17,7 +18,8 @@
     </ion-list>
     <ion-list lines="none">
       <ion-list-header>Categories</ion-list-header>
-      <ion-menu-toggle autoHide="false" *ngFor="let d of categorias | async">
+      <ion-menu-toggle autoHide="false" *ngFor="let d of categorias">
+      <!-- <ion-menu-toggle autoHide="false" *ngFor="let d of categorias | async"> -->
         <ion-item [routerLink]="'categories/'+d.slug" routerLinkActive="selected" detail>
           <ion-avatar slot="start">
             <ion-img [src]="d.image"></ion-img>

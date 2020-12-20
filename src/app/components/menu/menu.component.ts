@@ -9,16 +9,27 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  dark = true;
 
-  componentes: Observable<Componente[]>;
-  categorias: Observable<Category[]>;
+  // componentes: Observable<Componente[]>;
+  // categorias: Observable<Category[]>;
+  componentes: any;
+  categorias: any;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+    this.componentes = [];
+    this.categorias = [];
+   }
 
   ngOnInit() {
-    this.componentes = this.dataService.getMenuOpts();
-    this.categorias = this.dataService.getCategory();
+    // this.componentes = this.dataService.getMenuOpts();
+    // this.categorias = this.dataService.getCategory();
+    this.dataService.getMenuOpts().subscribe(res => {
+      console.log(res)
+      this.componentes = res;
+    });
+    this.dataService.getCategorias().subscribe(res => {
+      this.categorias = res;
+    });
   }
 
 }

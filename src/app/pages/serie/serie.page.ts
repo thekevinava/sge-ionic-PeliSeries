@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 
@@ -11,9 +11,14 @@ import { DataService } from 'src/app/services/data.service';
 export class SeriePage implements OnInit {
   slug: any;
   catSlug: any;
-  series = [];
+
+  series: any;
+  // series = [];
+
   serie: any;
-  categorias = [];
+
+  categorias: any;
+  // categorias = [];
 
   usuario = {
     slug: '',
@@ -29,20 +34,40 @@ export class SeriePage implements OnInit {
   cardForm = true;
   cardComentarios = true;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private alertCtrl: AlertController, private toastController: ToastController) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private alertCtrl: AlertController, private toastController: ToastController, public router: Router) {
+    this.categorias = [];
+    this.series = [];
+  }
 
   ngOnInit() {
-    this.dataService.getCategory().subscribe(res => {
+    // this.dataService.getCategory().subscribe(res => {
+    //   this.categorias = res;
+    // });
+    this.dataService.getCategorias().subscribe(res => {
       this.categorias = res;
     });
-    /* Recojo las series del JSON */
-    this.dataService.getSerie().subscribe((data: any) => {
-      const serieSlug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module */
-      this.series = data; // Guardo las categorías
 
-      if (data) {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].slug === serieSlug) return this.serie = data[i]; // Guardo los datos de la categoría requerida
+
+    /* Recojo las series del JSON */
+    // this.dataService.getSerie().subscribe((data: any) => {
+    //   const serieSlug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module */
+    //   this.series = data; // Guardo las categorías
+
+    //   if (data) {
+    //     for (let i = 0; i < data.length; i++) {
+    //       if (data[i].slug === serieSlug) return this.serie = data[i]; // Guardo los datos de la categoría requerida
+    //     }
+    //   }
+    // });
+
+    /* Recojo las series del JSON */
+    this.dataService.getSeries().subscribe(res => {
+      const serieSlug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo series.routing.module
+      this.series = res; // Guardo las series
+
+      if (this.series) {
+        for (let i = 0; i<this.series.length;i++) {
+          if (this.series[i].slug === serieSlug) return this.serie = this.series[i]; // Guardo los datos de la serie requerida
         }
       }
     });
@@ -71,29 +96,26 @@ export class SeriePage implements OnInit {
     this.usuario.slug = slugSerie;
     console.log(this.puntuaciones)
 
+    this.dataService.postComentario(this.usuario).subscribe((response) => {
+      // this.router.navigate['comentarios']
+    });
     /* Reinicio el formulario */
     this.usuario = {
       slug: '',
       email: '',
       puntuacion: '',
       comentario: '',
-      fecha: null
+      fecha: Date.now()
     };
 
     this.cardSerie = false;
     this.cardForm = true;
     this.mostrarToast();
-    this.saveText(JSON.stringify(this.puntuaciones), "/assets/filename.json");
-  }
 
-  // guardarPuntuacionesJSON(text, filename) {
-  saveText(text, filename) {
-    // var a = document.createElement('a');
-    // a.setAttribute('href', 'data:text/plain;charset=utf-u,'+encodeURIComponent(text));
-    // a.setAttribute('download', filename);
-    // a.click()
+
+
+
   }
-  // }
 
   async mostrarToast() {
     const toast = await this.toastController.create({
