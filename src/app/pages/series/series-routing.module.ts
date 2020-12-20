@@ -10,7 +10,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // redirectTo: '/home' // si entras en url/series, te redirecciona a url/home
         component: SeriesPage
       },
       {

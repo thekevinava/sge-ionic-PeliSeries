@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  dark = true;
 
   componentes: Observable<Componente[]>;
   categorias: Observable<Category[]>;

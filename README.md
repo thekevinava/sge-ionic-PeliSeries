@@ -34,6 +34,7 @@
 - Poder loguearse / registrarse.
 - Poder agregar / eliminar las series desde la propia aplicación.
 - Traducciones
+- Dark / Light mode
 
 
 ## Algunas imágenes
