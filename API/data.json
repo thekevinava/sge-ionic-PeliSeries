@@ -1,18 +1,12 @@
 {
-  "usuarios": [
-    {
-      "name": "admin",
-      "password": "admin"
-    }
-  ],
   "menu": [
     {
-      "icon": "skull-outline",
+      "icon": "home-outline",
       "name": "Inicio",
       "redirectTo": "/home"
     },
     {
-      "icon": "information-circle-outline",
+      "icon": "list-outline",
       "name": "Categorias",
       "redirectTo": "/categories"
     },
@@ -248,6 +242,14 @@
       "comentario": "asd",
       "fecha": 1608486733313,
       "id": 1
+    },
+    {
+      "slug": "big-mouth",
+      "email": "asd@adsk.cas",
+      "puntuacion": 6,
+      "comentario": "aispjd ijasijdiajs idjiasjijaisj jidiasojasijdjijas jdijas idj iasijdijasdjjasdjjasdjiasdjasd",
+      "fecha": 1608489841838,
+      "id": 2
     }
   ]
 }

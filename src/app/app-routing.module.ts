@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'series',
     loadChildren: () => import('./pages/series/series.module').then( m => m.SeriesPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'admin-panel',
+    loadChildren: () => import('./pages/admin-panel/admin-panel.module').then( m => m.AdminPanelPageModule)
+  },
   // {
   //   path: 'serie',
   //   loadChildren: () => import('./pages/serie/serie.module').then( m => m.SeriePageModule)

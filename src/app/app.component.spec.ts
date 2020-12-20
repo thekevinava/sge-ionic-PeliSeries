@@ -6,16 +6,19 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { UserData } from './services/userdata.service';
 
 describe('AppComponent', () => {
 
   let statusBarSpy;
+  let userDataSpy;
   let splashScreenSpy;
   let platformReadySpy;
   let platformSpy;
 
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
+    userDataSpy = jasmine.createSpyObj('UserData', ['isLoggedIn', 'logout']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
@@ -25,6 +28,7 @@ describe('AppComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
+        { provide: UserData, useValue: userDataSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
       ],

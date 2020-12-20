@@ -15,6 +15,35 @@
         </ion-item>
       </ion-menu-toggle>
     </ion-list>
+
+    <ng-container *ngIf="!loggedIn">
+      <ion-list>
+        <ion-list-header>User</ion-list-header>
+        <ion-menu-toggle autoHide="false">
+          <ion-item routerLink="/login" routerLinkActive="selected" detail>
+            <ion-icon slot="start" name="log-in"></ion-icon>
+            <ion-label>Login</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ng-container>
+
+    <ng-container *ngIf="loggedIn">
+      <ion-list>
+        <ion-list-header>User</ion-list-header>
+        <ion-menu-toggle autoHide="false">
+          <ion-item routerLink="/admin-panel" routerLinkActive="selected" detail>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Admin Panel</ion-label>
+          </ion-item>
+          <ion-item (click)="logout()" detail>
+            <ion-icon slot="start" name="log-out"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ng-container>
+
     <ion-list lines="none">
       <ion-list-header>Categories</ion-list-header>
       <ion-menu-toggle autoHide="false" *ngFor="let d of categorias">
