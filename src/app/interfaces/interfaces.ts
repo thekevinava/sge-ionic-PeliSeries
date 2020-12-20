@@ -1,11 +1,12 @@
-export interface Componente {
+export class Componente {
     icon: string;
     name: string;
     redirectTo: string;
 }
 
-export interface Serie {
+export class Serie {
     title: string;
+    id: number;
     year: string;
     sinopsis: string;
     seasons: string;
@@ -15,14 +16,16 @@ export interface Serie {
     slug: string;
 }
 
-export interface Category {
+export class Category {
     slug: string;
+    id: number;
     name: string;
     image: string;
 }
 
-export interface Comentarios {
+export class Comentarios {
     slug: string;
+    id: number;
     email: string;
     puntuacion: string;
     comentario: string;

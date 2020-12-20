@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminPanelPageRoutingModule } from './admin-panel-routing.module';
+import { SeriesEditPageRoutingModule } from './series-edit-routing.module';
 
-import { AdminPanelPage } from './admin-panel.page';
+import { SeriesEditPage } from './series-edit.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPanelPageRoutingModule,
+    SeriesEditPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [AdminPanelPage]
+  declarations: [SeriesEditPage]
 })
-export class AdminPanelPageModule {}
+export class SeriesEditPageModule {}

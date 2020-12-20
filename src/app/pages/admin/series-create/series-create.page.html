@@ -1,0 +1,43 @@
+<app-header titulo="Create a Serie"></app-header>
+
+<ion-content class="ion-padding">
+    <ng-container *ngIf="username">
+        <form #createForm="ngForm">
+            <!-- <ion-list> -->
+            <ion-item>
+                <ion-label position="floating">Titulo</ion-label>
+                <ion-input [(ngModel)]="data.title" name="titulo" type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Slug (/series/serie)</ion-label>
+                <ion-input [(ngModel)]="data.slug" name="slug" type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Año de emisión</ion-label>
+                <ion-input [(ngModel)]="data.year" name="year" type="number" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Sinopsis</ion-label>
+                <ion-textarea [(ngModel)]="data.sinopsis" name="sinopsis" required></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Temporadas</ion-label>
+                <ion-input [(ngModel)]="data.seasons" name="seasons" type="number" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Capítulos</ion-label>
+                <ion-input [(ngModel)]="data.episodes" name="episodes" type="number" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Categorias (separadas por coma)</ion-label>
+                <ion-input [(ngModel)]="categories" name="categories" type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Imagenes (rutas separadas por coma)</ion-label>
+                <ion-textarea [(ngModel)]="images" name="images" required></ion-textarea>
+            </ion-item>
+            <ion-button (click)="submitForm()" expand="block">Enviar</ion-button>
+            <!-- </ion-list> -->
+        </form>
+    </ng-container>
+</ion-content>

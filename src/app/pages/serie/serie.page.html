@@ -68,7 +68,7 @@
                     </ion-item>
                     <ion-item>
                         <ion-label position="floating">Comentario</ion-label>
-                        <ion-input type="textarea" name="comentario" [(ngModel)]="usuario.comentario"></ion-input>
+                        <ion-textarea name="comentario" [(ngModel)]="usuario.comentario"></ion-textarea>
                     </ion-item>
                     <ion-item>
                         <ion-button slot="start" type="submit" (click)="ejecutarFormulario(serie?.slug)"

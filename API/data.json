@@ -185,51 +185,77 @@
         "/assets/images/series/friends/image2.png",
         "/assets/images/series/friends/image3.png"
       ]
+    },
+    {
+      "title": "Dark",
+      "slug": "dark",
+      "year": 2017,
+      "sinopsis": "La desaparición de dos niños muestra los vínculos entre cuatro familias y expone el pasado de una pequeña ciudad.",
+      "seasons": 3,
+      "episodes": 26,
+      "categories": [
+        "Misterio"
+      ],
+      "images": [
+        "https://www.cronista.com/__export/1594907280728/sites/diarioelcronista/img/2020/07/16/dark.jpg",
+        "https://i.blogs.es/0bab5d/dark_phillips_netflix_ringer.0/1366_2000.jpg",
+        "https://eloutput.com/app/uploads-eloutput.com/2020/05/dark-serie-930x487.jpg"
+      ],
+      "id": 10
     }
   ],
   "categorias": [
     {
       "slug": "drama",
+      "id": 1,
       "name": "Drama",
       "image": "/assets/images/categories/drama.png"
     },
     {
       "slug": "action",
+      "id": 2,
       "name": "Acción",
       "image": "/assets/images/categories/action.png"
     },
     {
       "slug": "comedy",
+      "id": 3,
       "name": "Comedia",
       "image": "/assets/images/categories/comedy.png"
     },
     {
       "slug": "romance",
+      "id": 4,
       "name": "Romance",
       "image": "/assets/images/categories/romance.png"
     },
     {
       "slug": "mistery",
+      "id": 5,
       "name": "Misterio",
       "image": "/assets/images/categories/mistery.png"
     },
     {
       "slug": "adventure",
+      "id": 6,
       "name": "Aventura",
       "image": "/assets/images/categories/adventure.png"
     },
     {
       "slug": "crime",
+      "id": 7,
       "name": "Crimen",
       "image": "/assets/images/categories/crime.png"
     },
     {
       "slug": "animation",
+      "id": 8,
       "name": "Animación",
       "image": "/assets/images/categories/animation.png"
     },
     {
       "slug": "fantasy",
+      "id": 9,
       "name": "Fantasía",
       "image": "/assets/images/categories/fantasy.png"
     }

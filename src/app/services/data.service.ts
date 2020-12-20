@@ -62,6 +62,23 @@ export class DataService {
       )
   }
 
+  deleteSerie(id) {
+    return this.http.delete<Serie>('http://localhost:3000/series' + '/' + id, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  createSerie(serie): Observable<Serie> {
+    return this.http
+      .post<Serie>('http://localhost:3000/series', JSON.stringify(serie), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
   getCategorias(): Observable<Category> {
     return this.http
       .get<Category>('http://localhost:3000/categorias')

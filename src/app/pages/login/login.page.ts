@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
   onLogin(form: NgForm) {
     if ((this.login.username === this.loginData.username) && (this.login.password === this.loginData.password)) {
       this.userData.login(this.login.username);
-      this.router.navigateByUrl('/admin-panel');
+      this.router.navigateByUrl('/admin/home');
     }
   }
 
