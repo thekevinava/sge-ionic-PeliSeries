@@ -8,18 +8,12 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CategoriesPage implements OnInit {
   categorias: any;
-  // categorias: any[] = [];
-
-
 
   constructor(private dataService: DataService) {
     this.categorias = [];
    }
 
   ngOnInit() {
-    // this.dataService.getCategory().subscribe(res => {
-    //   this.categorias = res;
-    // });
     this.dataService.getCategorias().subscribe(res => {
       this.categorias = res;
     })

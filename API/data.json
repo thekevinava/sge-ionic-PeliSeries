@@ -1,9 +1,20 @@
 {
+  "usuarios": [
+    {
+      "name": "admin",
+      "password": "admin"
+    }
+  ],
   "menu": [
     {
       "icon": "skull-outline",
       "name": "Inicio",
       "redirectTo": "/home"
+    },
+    {
+      "icon": "information-circle-outline",
+      "name": "Categorias",
+      "redirectTo": "/categories"
     },
     {
       "icon": "information-circle-outline",
@@ -26,11 +37,10 @@
         "Misterio"
       ],
       "images": [
-        "/assets/images/the-blacklist/image1.png",
-        "/assets/images/the-blacklist/image2.png",
-        "/assets/images/the-blacklist/image3.png"
-      ],
-      "rating": "8.0"
+        "/assets/images/series/the-blacklist/image1.png",
+        "/assets/images/series/the-blacklist/image2.png",
+        "/assets/images/series/the-blacklist/image3.png"
+      ]
     },
     {
       "slug": "arrow",
@@ -46,11 +56,10 @@
         "Crimen"
       ],
       "images": [
-        "/assets/images/arrow/image1.png",
-        "/assets/images/arrow/image2.png",
-        "/assets/images/arrow/image3.png"
-      ],
-      "rating": "7.5"
+        "/assets/images/series/arrow/image1.png",
+        "/assets/images/series/arrow/image2.png",
+        "/assets/images/series/arrow/image3.png"
+      ]
     },
     {
       "slug": "suits",
@@ -65,11 +74,10 @@
         "Drama"
       ],
       "images": [
-        "/assets/images/suits/image1.png",
-        "/assets/images/suits/image2.png",
-        "/assets/images/suits/image3.png"
-      ],
-      "rating": "8.5"
+        "/assets/images/series/suits/image1.png",
+        "/assets/images/series/suits/image2.png",
+        "/assets/images/series/suits/image3.png"
+      ]
     },
     {
       "slug": "big-mouth",
@@ -85,11 +93,10 @@
         "Romance"
       ],
       "images": [
-        "/assets/images/big-mouth/image1.png",
-        "/assets/images/big-mouth/image2.png",
-        "/assets/images/big-mouth/image3.png"
-      ],
-      "rating": "8.0"
+        "/assets/images/series/big-mouth/image1.png",
+        "/assets/images/series/big-mouth/image2.png",
+        "/assets/images/series/big-mouth/image3.png"
+      ]
     },
     {
       "slug": "lucifer",
@@ -105,11 +112,10 @@
         "Fantasía"
       ],
       "images": [
-        "/assets/images/lucifer/image1.png",
-        "/assets/images/lucifer/image2.png",
-        "/assets/images/lucifer/image3.png"
-      ],
-      "rating": "8.2"
+        "/assets/images/series/lucifer/image1.png",
+        "/assets/images/series/lucifer/image2.png",
+        "/assets/images/series/lucifer/image3.png"
+      ]
     },
     {
       "slug": "supergirl",
@@ -125,11 +131,10 @@
         "Drama"
       ],
       "images": [
-        "/assets/images/supergirl/image1.png",
-        "/assets/images/supergirl/image2.png",
-        "/assets/images/supergirl/image3.png"
-      ],
-      "rating": "6.3"
+        "/assets/images/series/supergirl/image1.png",
+        "/assets/images/series/supergirl/image2.png",
+        "/assets/images/series/supergirl/image3.png"
+      ]
     },
     {
       "slug": "the-flash",
@@ -145,11 +150,10 @@
         "Drama"
       ],
       "images": [
-        "/assets/images/the-flash/image1.png",
-        "/assets/images/the-flash/image2.png",
-        "/assets/images/the-flash/image3.png"
-      ],
-      "rating": "7.7"
+        "/assets/images/series/the-flash/image1.png",
+        "/assets/images/series/the-flash/image2.png",
+        "/assets/images/series/the-flash/image3.png"
+      ]
     },
     {
       "slug": "vikings",
@@ -165,11 +169,10 @@
         "Drama"
       ],
       "images": [
-        "/assets/images/vikingos/image1.png",
-        "/assets/images/vikingos/image2.png",
-        "/assets/images/vikingos/image3.png"
-      ],
-      "rating": "8.5"
+        "/assets/images/series/vikingos/image1.png",
+        "/assets/images/series/vikingos/image2.png",
+        "/assets/images/series/vikingos/image3.png"
+      ]
     },
     {
       "slug": "friends",
@@ -184,11 +187,10 @@
         "Romance"
       ],
       "images": [
-        "/assets/images/friends/image1.png",
-        "/assets/images/friends/image2.png",
-        "/assets/images/friends/image3.png"
-      ],
-      "rating": "8.9"
+        "/assets/images/series/friends/image1.png",
+        "/assets/images/series/friends/image2.png",
+        "/assets/images/series/friends/image3.png"
+      ]
     }
   ],
   "categorias": [
@@ -240,28 +242,12 @@
   ],
   "comentarios": [
     {
-      "slug": "lucifer",
+      "slug": "big-mouth",
       "email": "asd@asd.com",
       "puntuacion": 5,
       "comentario": "asd",
-      "fecha": 1608478402960,
+      "fecha": 1608486733313,
       "id": 1
-    },
-    {
-      "slug": "lucifer",
-      "email": "wqw@wq.co",
-      "puntuacion": 6,
-      "comentario": "aa",
-      "fecha": 1608478467390,
-      "id": 2
-    },
-    {
-      "slug": "big-mouth",
-      "email": "asd@gmail.com",
-      "puntuacion": 3,
-      "comentario": "asd",
-      "fecha": 1608481287272,
-      "id": 3
     }
   ]
 }

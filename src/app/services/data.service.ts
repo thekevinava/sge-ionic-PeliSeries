@@ -44,29 +44,9 @@ export class DataService {
       )
   }
 
-  // getMenuOpts() {
-  //   return this.http.get<Componente[]>('/assets/data/menu.json')
-  // }
-
-  // getSerie() {
-  //   return this.http.get<Serie[]>('/assets/data/series.json')
-  // }
-
-  // getCategory() {
-  //   return this.http.get<Category[]>('/assets/data/categorias.json')
-  // }
-
   getComentarios(): Observable<Comentarios> {
     return this.http
       .get<Comentarios>('http://localhost:3000/comentarios')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  postComentario(comentario) {
-    return this.http.post<Comentarios>('http://localhost:3000/comentarios', JSON.stringify(comentario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -85,6 +65,14 @@ export class DataService {
   getCategorias(): Observable<Category> {
     return this.http
       .get<Category>('http://localhost:3000/categorias')
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  postComentario(comentario) {
+    return this.http.post<Comentarios>('http://localhost:3000/comentarios', JSON.stringify(comentario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

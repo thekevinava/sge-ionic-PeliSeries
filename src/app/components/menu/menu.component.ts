@@ -10,8 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class MenuComponent implements OnInit {
 
-  // componentes: Observable<Componente[]>;
-  // categorias: Observable<Category[]>;
   componentes: any;
   categorias: any;
 
@@ -21,10 +19,7 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.componentes = this.dataService.getMenuOpts();
-    // this.categorias = this.dataService.getCategory();
     this.dataService.getMenuOpts().subscribe(res => {
-      console.log(res)
       this.componentes = res;
     });
     this.dataService.getCategorias().subscribe(res => {

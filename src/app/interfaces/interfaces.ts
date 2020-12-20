@@ -12,7 +12,6 @@ export interface Serie {
     episodes: string;
     categories: object;
     images: object;
-    rating: string;
     slug: string;
 }
 
