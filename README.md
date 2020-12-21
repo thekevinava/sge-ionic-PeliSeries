@@ -3,8 +3,8 @@
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/thekevinava/sge-ionic-PeliSeries">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/thekevinava/sge-ionic-PeliSeries">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/thekevinava/sge-ionic-PeliSeries">
-    <img alt="GitHub (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/thekevinava/sge-ionic-PeliSeries?label=Pre-Release%20date">
     <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/thekevinava/sge-ionic-PeliSeries?label=Release%20date">
+    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/thekevinava/sge-ionic-PeliSeries/total">
 </p>
 
 ## Instalación y Ejecución:

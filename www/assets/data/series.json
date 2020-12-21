@@ -1,0 +1,171 @@
+[    
+    {
+        "slug": "the-blacklist",
+        "title": "The Blacklist",
+        "year": "2013",
+        "sinopsis": "Una nueva perfiladora del FBI, Elizabeth Keen, ve su vida tambalearse cuando un misterioso criminal, Raymond Reddington, quien ha evitado ser capturado durante décadas, se entrega e insiste en hablar sólo con ella.",
+        "seasons": "8",
+        "episodes": "154",
+        "categories": [
+            "Drama",
+            "Crimen",
+            "Misterio"
+        ],
+        "images": [
+            "/assets/images/the-blacklist/image1.png",
+            "/assets/images/the-blacklist/image2.png",
+            "/assets/images/the-blacklist/image3.png"
+        ],
+        "rating": "8.0"
+    },
+    {
+        "slug": "arrow",
+        "title": "Arrow",
+        "year": "2012",
+        "sinopsis": "El malcriado multimillonario playboy Oliver Queen desaparece cuando su yate se pierde en el mar y se le presume muerto. Regresa cinco años después, un hombre nuevo, decidido a limpiar la ciudad como un vigilante encapuchado armado con un arco.",
+        "seasons": "8",
+        "episodes": "170",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Crimen"
+        ],
+        "images": [
+            "/assets/images/arrow/image1.png",
+            "/assets/images/arrow/image2.png",
+            "/assets/images/arrow/image3.png"
+        ],
+        "rating": "7.5"
+    },
+    {
+        "slug": "suits",
+        "title": "Suits",
+        "year": "2011",
+        "sinopsis": "A la fuga después de que un negocio de drogas saliera mal, Mike Ross, un hombre brillante a pesar de no haber acabado sus estudios, se encuentra trabajando con Harvey Specter, uno de los mejores abogados de la ciudad de Nueva York.",
+        "seasons": "9",
+        "episodes": "134",
+        "categories": [
+            "Comedia",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/suits/image1.png",
+            "/assets/images/suits/image2.png",
+            "/assets/images/suits/image3.png"
+        ],
+        "rating": "8.5"
+    },
+    {
+        "slug": "big-mouth",
+        "title": "Big Mouth",
+        "year": "2017",
+        "sinopsis": "Unos amigos adolescentes ven sus vidas tambalearse a través de las maravillas y los horrores de la pubertad.",
+        "seasons": "4",
+        "episodes": "43",
+        "categories": [
+            "Animación",
+            "Comedia",
+            "Romance"
+        ],
+        "images": [
+            "/assets/images/big-mouth/image1.png",
+            "/assets/images/big-mouth/image2.png",
+            "/assets/images/big-mouth/image3.png"
+        ],
+        "rating": "8.0"
+    },
+    {
+        "slug": "lucifer",
+        "title": "Lucifer",
+        "year": "2016",
+        "sinopsis": "Lucifer Morningstar ha decidido que está harto de ser un sirviente obediente en el Infierno y decide pasar un tiempo en la Tierra para entender mejor a la humanidad. Se instala en Los Ángeles, la ciudad de los ángeles.",
+        "seasons": "5",
+        "episodes": "93",
+        "categories": [
+            "Crimen",
+            "Drama",
+            "Fantasía"
+        ],
+        "images": [
+            "/assets/images/lucifer/image1.png",
+            "/assets/images/lucifer/image2.png",
+            "/assets/images/lucifer/image3.png"
+        ],
+        "rating": "8.2"
+    },
+    {
+        "slug": "supergirl",
+        "title": "Supergirl",
+        "year": "2015",
+        "sinopsis": "Las aventuras de la prima de Superman en su propia carrera como superheroína.",
+        "seasons": "5",
+        "episodes": "126",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/supergirl/image1.png",
+            "/assets/images/supergirl/image2.png",
+            "/assets/images/supergirl/image3.png"
+        ],
+        "rating": "6.3"
+    },
+    {
+        "slug": "the-flash",
+        "title": "The Flash",
+        "year": "2014",
+        "sinopsis": "Tras ser alcanzado por un rayo, Barry Allen despierta de su estado de coma para descubrir que se le ha dado el poder de la súper velocidad, convirtiéndose en Flash, luchando contra el crimen en Central City.",
+        "seasons": "6",
+        "episodes": "138",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/the-flash/image1.png",
+            "/assets/images/the-flash/image2.png",
+            "/assets/images/the-flash/image3.png"
+        ],
+        "rating": "7.7"
+    },
+    {
+        "slug": "vikings",
+        "title": "Vikingos",
+        "year": "2013",
+        "sinopsis": "Vikings nos transporta al mundo brutal y misterioso de Ragnar Lothbrok, un guerrero vikingo y granjero que anhela explorar, y asaltar, las distantes orillas al otro lado del océano.",
+        "seasons": "6",
+        "episodes": "93",
+        "categories": [
+            "Acción",
+            "Aventura",
+            "Drama"
+        ],
+        "images": [
+            "/assets/images/vikingos/image1.png",
+            "/assets/images/vikingos/image2.png",
+            "/assets/images/vikingos/image3.png"
+        ],
+        "rating": "8.5"
+    },
+    {
+        "slug": "friends",
+        "title": "Friends",
+        "year": "1994",
+        "sinopsis": "Sigue la vida personal y profesional de seis amigos de veinte o treinta-y-tantos en Manhattan.",
+        "seasons": "10",
+        "episodes": "235",
+        "categories": [
+            "Comedia",
+            "Romance"
+        ],
+        "images": [
+            "/assets/images/friends/image1.png",
+            "/assets/images/friends/image2.png",
+            "/assets/images/friends/image3.png"
+        ],
+        "rating": "8.9"
+    }
+]
