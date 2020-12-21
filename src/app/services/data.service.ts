@@ -10,6 +10,9 @@ import { Observable, throwError } from 'rxjs';
 })
 export class DataService {
 
+  jsonURL: 'http://localhost:3000/';
+  // jsonURL: 'https://json-server-ionic.herokuapp.com/';
+
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
@@ -37,8 +40,7 @@ export class DataService {
 
   getMenuOpts(): Observable<Componente> {
     return this.http
-      // .get<Componente>('http://localhost:3000/menu')
-      .get<Componente>('https://json-server-ionic.herokuapp.com/menu')
+      .get<Componente>(this.jsonURL+'menu')
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -47,8 +49,7 @@ export class DataService {
 
   getComentarios(): Observable<Comentarios> {
     return this.http
-      // .get<Comentarios>('http://localhost:3000/comentarios')
-      .get<Comentarios>('https://json-server-ionic.herokuapp.com/comentarios')
+      .get<Comentarios>(this.jsonURL+'comentarios')
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -57,8 +58,7 @@ export class DataService {
 
   getSeries(): Observable<Serie> {
     return this.http
-      // .get<Serie>('http://localhost:3000/series')
-      .get<Serie>('https://json-server-ionic.herokuapp.com/series')
+      .get<Serie>(this.jsonURL+'series')
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -66,8 +66,7 @@ export class DataService {
   }
 
   deleteSerie(id) {
-    // return this.http.delete<Serie>('http://localhost:3000/series' + '/' + id, this.httpOptions)
-    return this.http.delete<Serie>('https://json-server-ionic.herokuapp.com/series' + '/' + id, this.httpOptions)
+    return this.http.delete<Serie>(this.jsonURL+'series' + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -76,8 +75,7 @@ export class DataService {
 
   createSerie(serie): Observable<Serie> {
     return this.http
-      // .post<Serie>('http://localhost:3000/series', JSON.stringify(serie), this.httpOptions)
-      .post<Serie>('https://json-server-ionic.herokuapp.com/series', JSON.stringify(serie), this.httpOptions)
+      .post<Serie>(this.jsonURL+'series', JSON.stringify(serie), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -85,8 +83,7 @@ export class DataService {
   }
 
   getSerie(id): Observable<Serie> {
-    // return this.http.get<Serie>('http://localhost:3000/series' + '/' + id)
-    return this.http.get<Serie>('https://json-server-ionic.herokuapp.com/series' + '/' + id)
+    return this.http.get<Serie>(this.jsonURL+'series' + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -94,8 +91,7 @@ export class DataService {
   }
 
   updateSerie(id,serie): Observable<Serie> {
-    // return this.http.put<Serie>('http://localhost:3000/series' + '/' + id, JSON.stringify(serie), this.httpOptions)
-    return this.http.put<Serie>('https://json-server-ionic.herokuapp.com/series' + '/' + id, JSON.stringify(serie), this.httpOptions)
+    return this.http.put<Serie>(this.jsonURL+'series' + '/' + id, JSON.stringify(serie), this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -104,8 +100,7 @@ export class DataService {
 
   getCategorias(): Observable<Category> {
     return this.http
-      // .get<Category>('http://localhost:3000/categorias')
-      .get<Category>('https://json-server-ionic.herokuapp.com/categorias')
+      .get<Category>(this.jsonURL+'categorias')
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -113,8 +108,7 @@ export class DataService {
   }
 
   getCategory(id): Observable<Category> {
-    // return this.http.get<Category>('http://localhost:3000/categorias' + '/' + id)
-    return this.http.get<Category>('https://json-server-ionic.herokuapp.com/categorias' + '/' + id)
+    return this.http.get<Category>(this.jsonURL+'categorias' + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -122,8 +116,7 @@ export class DataService {
   }
 
   updateCategory(id,category): Observable<Category> {
-    // return this.http.put<Category>('http://localhost:3000/categorias' + '/' + id, JSON.stringify(category), this.httpOptions)
-    return this.http.put<Category>('https://json-server-ionic.herokuapp.com/categorias' + '/' + id, JSON.stringify(category), this.httpOptions)
+    return this.http.put<Category>(this.jsonURL+'categorias' + '/' + id, JSON.stringify(category), this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -132,8 +125,7 @@ export class DataService {
 
   createCategory(category): Observable<Category> {
     return this.http
-      // .post<Category>('http://localhost:3000/categorias', JSON.stringify(category), this.httpOptions)
-      .post<Category>('https://json-server-ionic.herokuapp.com/categorias', JSON.stringify(category), this.httpOptions)
+      .post<Category>(this.jsonURL+'categorias', JSON.stringify(category), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -141,8 +133,7 @@ export class DataService {
   }
 
   deleteCategory(id) {
-    // return this.http.delete<Category>('http://localhost:3000/categorias' + '/' + id, this.httpOptions)
-    return this.http.delete<Category>('https://json-server-ionic.herokuapp.com/categorias' + '/' + id, this.httpOptions)
+    return this.http.delete<Category>(this.jsonURL+'categorias' + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -150,8 +141,7 @@ export class DataService {
   }
 
   postComentario(comentario) {
-    // return this.http.post<Comentarios>('http://localhost:3000/comentarios', JSON.stringify(comentario), this.httpOptions)
-    return this.http.post<Comentarios>('https://json-server-ionic.herokuapp.com/comentarios', JSON.stringify(comentario), this.httpOptions)
+    return this.http.post<Comentarios>(this.jsonURL+'comentarios', JSON.stringify(comentario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -159,8 +149,7 @@ export class DataService {
   }
 
   deleteComment(id) {
-    // return this.http.delete<Comentarios>('http://localhost:3000/comentarios' + '/' + id, this.httpOptions)
-    return this.http.delete<Comentarios>('https://json-server-ionic.herokuapp.com/comentarios' + '/' + id, this.httpOptions)
+    return this.http.delete<Comentarios>(this.jsonURL+'comentarios' + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
