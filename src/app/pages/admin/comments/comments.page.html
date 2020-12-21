@@ -1,0 +1,40 @@
+<!-- <app-header titulo="Comentarios de {{serieData?.title}}"></app-header> -->
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="username">
+    <ion-buttons>
+      <ion-back-button color="warning" text="Volver al listado de series" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-back-button color="warning" text="Volver al listado de series" routerLink="/">Volver al listado de series</ion-back-button>
+    <!-- <ion-button expand="full" color="warning" fill="outline" routerLinkActive="/">Volver al listado de series</ion-button> -->
+    <ion-item>
+      <ion-label>Comentarios recientes de {{ serieData?.title }}</ion-label>
+    </ion-item>
+    <ion-card *ngFor="let c of commentsSerie">
+      <ion-card-content class="ion-padding">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="3">
+                    <ion-thumbnail>
+                        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                    </ion-thumbnail>
+                </ion-col >
+                <ion-col>
+                    <ion-label><b>Fecha:</b> {{getFecha(c.fecha)}}</ion-label><br>
+                    <ion-label><b>Email:</b> {{c.email}}</ion-label><br>
+                    <ion-label><b>Comentario:</b>
+                        <hr> {{c.comentario}}
+                        <hr>
+                    </ion-label>
+                    <ion-label><b>Puntuación:</b> {{c.puntuacion}}</ion-label>
+                </ion-col>
+            </ion-row>
+            <hr>
+            <ion-item>
+              <ion-button (click)="delete(c)" slot="end"><ion-icon name="trash"></ion-icon></ion-button>
+            </ion-item>
+        </ion-grid>
+    </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

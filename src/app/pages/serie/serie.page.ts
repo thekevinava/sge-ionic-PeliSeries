@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
+import { UserData } from 'src/app/services/userdata.service';
 
 @Component({
   selector: 'app-serie',
@@ -9,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./serie.page.scss'],
 })
 export class SeriePage implements OnInit {
+  username: any;
   slug: any;
   catSlug: any;
 
@@ -33,13 +35,15 @@ export class SeriePage implements OnInit {
   cardForm = true;
   cardComentarios = true;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private alertCtrl: AlertController, private toastController: ToastController, public router: Router) {
+  constructor(private route: ActivatedRoute, private dataService: DataService, private alertCtrl: AlertController,
+    private toastController: ToastController, private router: Router, private userData: UserData) {
     this.categorias = [];
     this.series = [];
     this.puntuaciones = [];
   }
 
   ngOnInit() {
+    this.getUsername();
     this.dataService.getCategorias().subscribe(res => {
       this.categorias = res;
     });
@@ -50,24 +54,33 @@ export class SeriePage implements OnInit {
       this.series = res; // Guardo las series
 
       if (this.series) {
-        for (let i = 0; i<this.series.length;i++) {
+        for (let i = 0; i < this.series.length; i++) {
           if (this.series[i].slug === serieSlug) return this.serie = this.series[i]; // Guardo los datos de la serie requerida
         }
       }
     });
+    this.getComentarios();
+  }
 
+  getComentarios () {
     this.dataService.getComentarios().subscribe(res => {
       this.puntuaciones = res;
-      for (let i = 0;i<this.puntuaciones.length;i++) {
+      for (let i = 0; i < this.puntuaciones.length; i++) {
         if (this.puntuaciones[i].slug === this.serie.slug) {
           this.comentariosSerie.push(this.puntuaciones[i]);
         }
       }
-      this.comentariosSerie.sort((a,b): any => {
+      this.comentariosSerie.sort((a, b): any => {
         if (a['fecha'] < b['fecha']) return 1;
         if (a['fecha'] > b['fecha']) return -1;
         return 0;
       });
+    });
+  }
+
+  getUsername() {
+    this.userData.getUsername().then((username) => {
+      this.username = username;
     });
   }
 
@@ -87,7 +100,7 @@ export class SeriePage implements OnInit {
   ejecutarFormulario(slugSerie) {
     this.comentariosSerie.push(this.usuario);
     /* Reordeno el listado de los comentarios */
-    this.comentariosSerie.sort((a,b): any => {
+    this.comentariosSerie.sort((a, b): any => {
       if (a['fecha'] < b['fecha']) return 1;
       if (a['fecha'] > b['fecha']) return -1;
       return 0;
@@ -107,7 +120,7 @@ export class SeriePage implements OnInit {
       fecha: Date.now()
     };
 
-    this.visualizaciones(false,true,true);
+    this.visualizaciones(false, true, true);
     this.mostrarToast();
   }
 
@@ -119,26 +132,42 @@ export class SeriePage implements OnInit {
     toast.present();
   }
 
-  getFecha(fecha) {
-    let date = new Date(fecha);
-    return date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+' '+date.getHours()+':'+date.getMinutes();
+  async mostrarToast2() {
+    const toast = await this.toastController.create({
+      message: 'Has eliminado el comentario correctamente.',
+      duration: 2000
+    });
+    toast.present();
   }
 
-  visualizaciones(ficha,form,comens) {
+  getFecha(fecha) {
+    let date = new Date(fecha);
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
+  }
+
+  visualizaciones(ficha, form, comens) {
     this.cardSerie = ficha;
     this.cardForm = form;
     this.cardComentarios = comens;
   }
 
   puntuacionTotal() {
-    if (this.comentariosSerie.length>0) {
+    if (this.comentariosSerie.length > 0) {
       let total = 0;
-      for (let i = 0; i<this.comentariosSerie.length;i++) {
+      for (let i = 0; i < this.comentariosSerie.length; i++) {
         total += this.comentariosSerie[i].puntuacion;
       }
-      return total/this.comentariosSerie.length;
+      return total / this.comentariosSerie.length;
     }
     else return "Todavía no se ha puntuado";
+  }
+
+  deleteComment(item) {
+    this.dataService.deleteComment(item.id).subscribe(res => {
+      this.comentariosSerie = []; // Reinicio el array
+      this.getComentarios();
+      this.mostrarToast2();
+    });
   }
 
 }

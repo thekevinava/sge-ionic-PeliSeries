@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Serie } from 'src/app/interfaces/interfaces';
+import { ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 import { UserData } from 'src/app/services/userdata.service';
 
@@ -15,6 +15,8 @@ export class SeriesCreatePage implements OnInit {
   categories: any;
   images: any;
 
+  categoriesData: any;
+
   data = {
     title: null,
     slug: null,
@@ -26,10 +28,16 @@ export class SeriesCreatePage implements OnInit {
     images: null
   }
 
-  constructor(public dataService: DataService, public userData: UserData, public router: Router) { }
+  constructor(public dataService: DataService, public userData: UserData, public router: Router, private toastController: ToastController) { 
+    this.categoriesData = [];
+  }
   
   ngOnInit() {
     this.getUsername();
+
+    this.dataService.getCategorias().subscribe(res => {
+      this.categoriesData = res;
+    });
   }
 
   getUsername() {
@@ -39,7 +47,6 @@ export class SeriesCreatePage implements OnInit {
   }
 
   submitForm() {
-    this.data.categories = this.categories.split(',');
     this.data.images = this.images.split(',');
     this.dataService.createSerie(this.data).subscribe(res => {
       this.data = {
@@ -52,7 +59,16 @@ export class SeriesCreatePage implements OnInit {
         categories: null,
         images: null
       }
+      this.mostrarToast();
     });
+  }
+
+  async mostrarToast() {
+    const toast = await this.toastController.create({
+      message: 'Has añadido la serie correctamente.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

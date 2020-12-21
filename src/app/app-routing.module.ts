@@ -40,16 +40,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/series-create/series-create.module').then( m => m.SeriesCreatePageModule)
   },
   {
-    path: 'category-create',
+    path: 'admin/series-edit',
+    loadChildren: () => import('./pages/admin/series-edit/series-edit.module').then( m => m.SeriesEditPageModule)
+  },
+  {
+    path: 'admin/category-create',
     loadChildren: () => import('./pages/admin/category-create/category-create.module').then( m => m.CategoryCreatePageModule)
   },
   {
-    path: 'category-list',
+    path: 'admin/category-list',
     loadChildren: () => import('./pages/admin/category-list/category-list.module').then( m => m.CategoryListPageModule)
   },
   {
-    path: 'category-edit',
+    path: 'admin/category-edit',
     loadChildren: () => import('./pages/admin/category-edit/category-edit.module').then( m => m.CategoryEditPageModule)
+  },
+  {
+    path: 'admin/comments',
+    loadChildren: () => import('./pages/admin/comments/comments.module').then( m => m.CommentsPageModule)
   }
 ];
 

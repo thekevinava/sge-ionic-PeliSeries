@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { last } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { UserData } from 'src/app/services/userdata.service';
 
 @Component({
-  selector: 'app-series-edit',
-  templateUrl: './series-edit.page.html',
-  styleUrls: ['./series-edit.page.scss'],
+  selector: 'app-comments',
+  templateUrl: './comments.page.html',
+  styleUrls: ['./comments.page.scss'],
 })
-export class SeriesEditPage implements OnInit {
+export class CommentsPage implements OnInit {
   username: any;
   serieData: any;
-  id: any;
-  images: any;
-  categoriesData: any;
+  commentsData: any;
+  commentsSerie: any;
 
+  id: any;
 
   constructor(private dataService: DataService, private userData: UserData, private activatedRoute: ActivatedRoute, private toastController: ToastController) { 
     this.serieData = [];
-    this.images = "";
-    this.categoriesData = [];
+    this.commentsData = [];
+    this.commentsSerie = [];
   }
 
   ngOnInit() {
@@ -29,15 +28,19 @@ export class SeriesEditPage implements OnInit {
     this.id = this.activatedRoute.snapshot.params["serieID"];
     this.dataService.getSerie(this.id).subscribe(res => {
       this.serieData = res;
-      for (let i = 0; i<this.serieData.images.length;i++) {
-        console.log(this.serieData.images[i])
-        this.images += this.serieData.images[i] + ',';
-      }
-      this.images = this.images.slice(0,-1); // Elimino la última coma
     });
 
-    this.dataService.getCategorias().subscribe(res => {
-      this.categoriesData = res;
+    this.getComentarios();
+  }
+
+  getComentarios() {
+    this.dataService.getComentarios().subscribe(res => {
+      this.commentsData = res;
+      for (let i = 0; i<this.commentsData.length;i++) {
+        if (this.serieData.slug === this.commentsData[i].slug) {
+          this.commentsSerie.push(this.commentsData[i]);
+        }
+      }
     });
   }
 
@@ -47,15 +50,22 @@ export class SeriesEditPage implements OnInit {
     });
   }
 
-  update() {
-    this.dataService.updateSerie(this.id, this.serieData).subscribe(res => { 
+  getFecha(fecha) {
+    let date = new Date(fecha);
+    return date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+' '+date.getHours()+':'+date.getMinutes();
+  }
+
+  delete(item) {
+    this.dataService.deleteComment(item.id).subscribe(res => {
+      this.commentsSerie = []; // Reinicio el array
+      this.getComentarios();
       this.mostrarToast();
     });
   }
 
   async mostrarToast() {
     const toast = await this.toastController.create({
-      message: 'Has editado la serie correctamente.',
+      message: 'Has eliminado el comentario correctamente.',
       duration: 2000
     });
     toast.present();

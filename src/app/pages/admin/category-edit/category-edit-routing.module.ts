@@ -6,7 +6,16 @@ import { CategoryEditPage } from './category-edit.page';
 const routes: Routes = [
   {
     path: '',
-    component: CategoryEditPage
+    children: [
+      {
+        path: '',
+        component: CategoryEditPage
+      },
+      {
+        path: ':categoryID',
+        component: CategoryEditPage
+      }
+    ]
   }
 ];
 

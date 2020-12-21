@@ -64,10 +64,10 @@ export class DataService {
 
   deleteSerie(id) {
     return this.http.delete<Serie>('http://localhost:3000/series' + '/' + id, this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError)
-    )
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
   }
 
   createSerie(serie): Observable<Serie> {
@@ -79,6 +79,22 @@ export class DataService {
       )
   }
 
+  getSerie(id): Observable<Serie> {
+    return this.http.get<Serie>('http://localhost:3000/series' + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  updateSerie(id,serie): Observable<Serie> {
+    return this.http.put<Serie>('http://localhost:3000/series' + '/' + id, JSON.stringify(serie), this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
   getCategorias(): Observable<Category> {
     return this.http
       .get<Category>('http://localhost:3000/categorias')
@@ -88,8 +104,49 @@ export class DataService {
       )
   }
 
+  getCategory(id): Observable<Category> {
+    return this.http.get<Category>('http://localhost:3000/categorias' + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  updateCategory(id,category): Observable<Category> {
+    return this.http.put<Category>('http://localhost:3000/categorias' + '/' + id, JSON.stringify(category), this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  createCategory(category): Observable<Category> {
+    return this.http
+      .post<Category>('http://localhost:3000/categorias', JSON.stringify(category), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  deleteCategory(id) {
+    return this.http.delete<Category>('http://localhost:3000/categorias' + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
   postComentario(comentario) {
     return this.http.post<Comentarios>('http://localhost:3000/comentarios', JSON.stringify(comentario), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  deleteComment(id) {
+    return this.http.delete<Comentarios>('http://localhost:3000/comentarios' + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

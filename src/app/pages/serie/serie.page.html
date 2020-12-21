@@ -106,6 +106,12 @@
                         </ion-col>
                     </ion-row>
                 </ion-grid>
+                <hr>
+                <ion-item *ngIf="username">
+                    <ion-button color="danger" (click)="deleteComment(c)" slot="end">
+                        <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                </ion-item>
             </ion-card-content>
         </ion-card>
     </div>

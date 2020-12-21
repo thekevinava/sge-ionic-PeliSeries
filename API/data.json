@@ -194,6 +194,7 @@
       "seasons": 3,
       "episodes": 26,
       "categories": [
+        "Drama",
         "Misterio"
       ],
       "images": [
@@ -260,22 +261,5 @@
       "image": "/assets/images/categories/fantasy.png"
     }
   ],
-  "comentarios": [
-    {
-      "slug": "big-mouth",
-      "email": "asd@asd.com",
-      "puntuacion": 5,
-      "comentario": "asd",
-      "fecha": 1608486733313,
-      "id": 1
-    },
-    {
-      "slug": "big-mouth",
-      "email": "asd@adsk.cas",
-      "puntuacion": 6,
-      "comentario": "aispjd ijasijdiajs idjiasjijaisj jidiasojasijdjijas jdijas idj iasijdijasdjjasdjjasdjiasdjasd",
-      "fecha": 1608489841838,
-      "id": 2
-    }
-  ]
+  "comentarios": []
 }

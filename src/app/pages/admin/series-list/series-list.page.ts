@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 import { UserData } from 'src/app/services/userdata.service';
 
@@ -12,7 +13,7 @@ export class SeriesListPage implements OnInit {
 
   seriesData: any;
 
-  constructor(public dataService: DataService, public userData: UserData) {
+  constructor(private dataService: DataService, private userData: UserData, private toastController: ToastController) {
     this.seriesData = [];
   }
 
@@ -36,7 +37,16 @@ export class SeriesListPage implements OnInit {
   delete(item) {
     this.dataService.deleteSerie(item.id).subscribe(res => {
       this.getSeries();
+      this.mostrarToast();
     });
+  }
+
+  async mostrarToast() {
+    const toast = await this.toastController.create({
+      message: 'Has eliminado la serie correctamente.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

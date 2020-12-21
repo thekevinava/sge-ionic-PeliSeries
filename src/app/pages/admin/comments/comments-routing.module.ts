@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SeriesEditPage } from './series-edit.page';
+import { CommentsPage } from './comments.page';
 
 const routes: Routes = [
   {
@@ -9,11 +9,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: SeriesEditPage
+        component: CommentsPage
       },
       {
         path: ':serieID',
-        component: SeriesEditPage
+        component: CommentsPage
       }
     ]
   }
@@ -23,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SeriesEditPageRoutingModule {}
+export class CommentsPageRoutingModule {}
