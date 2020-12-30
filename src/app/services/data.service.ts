@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Category, Componente, Serie, Comentarios } from '../interfaces/interfaces';
+import { Category, Componente, Serie, Comentaries } from '../interfaces/interfaces';
 import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -20,6 +20,7 @@ export class DataService {
     })
   }
 
+  /* Diferentes respuestas a errores */
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -47,9 +48,9 @@ export class DataService {
       )
   }
 
-  getComentarios(): Observable<Comentarios> {
+  getComentarios(): Observable<Comentaries> {
     return this.http
-      .get<Comentarios>(this.jsonURL+'comentarios')
+      .get<Comentaries>(this.jsonURL+'Comentaries')
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -141,7 +142,7 @@ export class DataService {
   }
 
   postComentario(comentario) {
-    return this.http.post<Comentarios>(this.jsonURL+'comentarios', JSON.stringify(comentario), this.httpOptions)
+    return this.http.post<Comentaries>(this.jsonURL+'Comentaries', JSON.stringify(comentario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -149,7 +150,7 @@ export class DataService {
   }
 
   deleteComment(id) {
-    return this.http.delete<Comentarios>(this.jsonURL+'comentarios' + '/' + id, this.httpOptions)
+    return this.http.delete<Comentaries>(this.jsonURL+'Comentaries' + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
