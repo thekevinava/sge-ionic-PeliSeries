@@ -10,8 +10,8 @@ import { Observable, throwError } from 'rxjs';
 })
 export class DataService {
 
-  jsonURL: 'http://localhost:3000/';
-  // jsonURL: 'https://json-server-ionic.herokuapp.com/';
+  jsonURL = 'http://localhost:3000/';
+  // jsonURL = 'https://json-peliseries.herokuapp.com/';
 
   // Http Options
   httpOptions = {
@@ -50,7 +50,7 @@ export class DataService {
 
   getComentarios(): Observable<Comentaries> {
     return this.http
-      .get<Comentaries>(this.jsonURL+'Comentaries')
+      .get<Comentaries>(this.jsonURL+'comentarios')
       .pipe(
         retry(2),
         catchError(this.handleError)
