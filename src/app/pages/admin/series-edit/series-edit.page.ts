@@ -36,7 +36,7 @@ export class SeriesEditPage implements OnInit {
       this.images = this.images.slice(0,-1); // Elimino la última coma
     });
 
-    this.dataService.getCategorias().subscribe(res => {
+    this.dataService.getCategories().subscribe(res => {
       this.categoriesData = res;
     });
   }

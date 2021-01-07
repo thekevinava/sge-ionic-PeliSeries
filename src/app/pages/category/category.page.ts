@@ -26,7 +26,7 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     /* Recojo las categorías del JSON */
-    this.dataService.getCategorias().subscribe(res => {
+    this.dataService.getCategories().subscribe(res => {
       const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module
       this.categorias = res; // Guardo las categorías
 

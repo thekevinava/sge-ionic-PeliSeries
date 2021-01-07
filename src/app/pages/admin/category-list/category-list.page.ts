@@ -29,7 +29,7 @@ export class CategoryListPage implements OnInit {
   }
 
   getCategories() {
-    this.dataService.getCategorias().subscribe(res => {
+    this.dataService.getCategories().subscribe(res => {
       this.categoriesData = res;
     });
   }

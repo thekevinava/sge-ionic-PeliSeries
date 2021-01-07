@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Category, Componente, Serie } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -23,9 +21,10 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getCategorias().subscribe(res => {
+    this.dataService.getCategories().subscribe(res => {
       this.categorias = res;
     });
+
 
     /* leo el JSON de las series y lo guardo directamente en un array */
     this.dataService.getSeries().subscribe(res => {

@@ -35,7 +35,7 @@ export class SeriesCreatePage implements OnInit {
   ngOnInit() {
     this.getUsername();
 
-    this.dataService.getCategorias().subscribe(res => {
+    this.dataService.getCategories().subscribe(res => {
       this.categoriesData = res;
     });
   }

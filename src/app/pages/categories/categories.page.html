@@ -2,13 +2,13 @@
 
 <ion-content>
     <ion-list>
-        <ion-item *ngFor="let s of categorias" routerLink="/categories/{{s.slug}}">
+        <ion-item *ngFor="let category of categories | async" routerLink="/categories/{{category.slug}}">
             <ion-avatar slot="start">
-                <ion-img [src]="s.image"></ion-img>
+                <ion-img [src]="category.image"></ion-img>
             </ion-avatar>
             <ion-label>
                 <h3>
-                    {{ s.name }}
+                    {{ category.name }}
                 </h3>
             </ion-label>
         </ion-item>

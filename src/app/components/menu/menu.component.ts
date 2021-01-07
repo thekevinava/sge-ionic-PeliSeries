@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Category, MenuOpts } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { UserData } from 'src/app/services/userdata.service';
 
@@ -9,58 +11,62 @@ import { UserData } from 'src/app/services/userdata.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  loggedIn = false; // Seteo la variable a que no estoy conectado
+  /** @param {boolean} loggedIn - Seteo la variable a que no estoy conectado */
+  loggedIn = false; 
 
   /* Variables elementos */
-  componentes: any;
-  categorias: any;
+  components: Observable<MenuOpts[]>;
+  categories: Observable<Category[]>;
 
-  constructor(private dataService: DataService, private userData: UserData, private router: Router) {
-    /* Inicializo las variables como Arrays */
-    this.componentes = [];
-    this.categorias = [];
-   }
+  constructor(private dataService: DataService, private userData: UserData, private router: Router) { }
 
   ngOnInit() {
     /* Al inicializar llamo las diferentes funciones */
-    this.getComponents(); // Obtiene los elementos del menú
-    this.getCategories(); // Obtiene los elementos de las categorías
+    this.getComponents(); 
+    this.getCategories();
 
     this.checkLoginStatus();
     this.listenForLoginEvents();
   }
 
+  /** 
+   * Función para obtener los componentes del menú en todo momento mediante un método GET 
+   */
   getComponents() {
-    /* Obtiene los elementos del menú mediante un método GET */
-    this.dataService.getMenuOpts().subscribe(res => {
-      this.componentes = res; // Guardo los elementos obtenidos en el array previamente inicializado
-    });
+    this.components = this.dataService.getMenuOpts();
   }
 
-  /* Obtiene los elementos de las categorías mediante un método GET */
+  /** 
+   * Función para obtener las categorías en todo momento mediante un método GET 
+   */
   getCategories() {
-    this.dataService.getCategorias().subscribe(res => {
-      this.categorias = res; // Guardo los elementos obtenidos en el array previamente inicializado
-    });
+    this.categories = this.dataService.getCategories();
   }
 
   /* ----- EXTRA ----- */
 
-  /* Compruebo si estoy logueado */
+  /** 
+   * Compruebo si estoy logueado 
+   */
   checkLoginStatus() {
     return this.userData.isLoggedIn().then(loggedIn => {
       return this.updateLoggedInStatus(loggedIn); 
     });
   }
 
+  /** 
+   * Seteo si estoy logueado o no 
+   */
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() => {
       this.loggedIn = loggedIn;
     }, 300);
   }
 
+  /** 
+   * Comprueba si está logueado o no 
+   */
   listenForLoginEvents() {
-    /* Comprueba si está logueado o no */
     
     window.addEventListener('user:login', () => {
       this.updateLoggedInStatus(true);
@@ -71,7 +77,9 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  /* Función para desconectarse */
+  /** 
+   * Función para desconectarse 
+   */
   logout() {
     this.userData.logout().then(() => {
       return this.router.navigateByUrl('/'); // Redirecciona a la ruta /

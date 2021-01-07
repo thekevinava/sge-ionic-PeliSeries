@@ -3,16 +3,16 @@
 <ion-content>
     <ion-card [hidden]="cardSerie">
         <ion-slides [options]="slideOpts" pager="true">
-            <ion-slide *ngFor="let s of serie?.images">
-                <ion-img [src]="s"></ion-img>
+            <ion-slide *ngFor="let image of serie?.images">
+                <ion-img [src]="image"></ion-img>
             </ion-slide>
         </ion-slides>
         <ion-list>
             <ion-card-header>
                 <ion-card-title color="warning">{{ serie?.title }}</ion-card-title>
-                <ng-container *ngFor="let cat of serie?.categories;">
-                    <ion-chip *ngIf="mismaCategoria(cat)" routerLink="/categories/{{catSlug}}" color="danger">
-                        {{ cat }}
+                <ng-container *ngFor="let category of serie?.categories;">
+                    <ion-chip *ngIf="mismaCategoria(category)" routerLink="/categories/{{catSlug}}" color="danger">
+                        {{ category }}
                     </ion-chip>
                 </ng-container>
             </ion-card-header>
@@ -86,7 +86,7 @@
             ficha de
             {{serie?.title}}</ion-button>
         <ion-title>Comentarios Recientes</ion-title>
-        <ion-card *ngFor="let c of comentariosSerie">
+        <ion-card *ngFor="let comentario of comentariosSerie">
             <ion-card-content class="ion-padding">
                 <ion-grid>
                     <ion-row>
@@ -96,19 +96,19 @@
                             </ion-thumbnail>
                         </ion-col>
                         <ion-col>
-                            <ion-label><b>Fecha:</b> {{getFecha(c.fecha)}}</ion-label><br>
-                            <ion-label><b>Email:</b> {{c.email}}</ion-label><br>
+                            <ion-label><b>Fecha:</b> {{getFecha(comentario.fecha)}}</ion-label><br>
+                            <ion-label><b>Email:</b> {{comentario.email}}</ion-label><br>
                             <ion-label><b>Comentario:</b>
-                                <hr> {{c.comentario}}
+                                <hr> {{comentario.comentario}}
                                 <hr>
                             </ion-label>
-                            <ion-label><b>Puntuación:</b> {{c.puntuacion}}</ion-label>
+                            <ion-label><b>Puntuación:</b> {{comentario.puntuacion}}</ion-label>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
                 <hr>
                 <ion-item *ngIf="username">
-                    <ion-button color="danger" (click)="deleteComment(c)" slot="end">
+                    <ion-button color="danger" (click)="deleteComment(comentario)" slot="end">
                         <ion-icon name="trash"></ion-icon>
                     </ion-button>
                 </ion-item>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -7,16 +9,13 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
-  categorias: any;
 
-  constructor(private dataService: DataService) {
-    this.categorias = [];
-   }
+  categories: Observable<Category[]>;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getCategorias().subscribe(res => {
-      this.categorias = res;
-    })
+    this.categories = this.dataService.getCategories();
   }
 
 }

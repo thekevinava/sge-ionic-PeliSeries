@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Category, Componente, Serie, Comentaries } from '../interfaces/interfaces';
-import { retry, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Category, Serie, Comentaries, MenuOpts } from '../interfaces/interfaces';
 
 
 @Injectable({
@@ -20,140 +18,137 @@ export class DataService {
     })
   }
 
-  /* Diferentes respuestas a errores */
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
-
   constructor(private http: HttpClient) { }
 
-  getMenuOpts(): Observable<Componente> {
-    return this.http
-      .get<Componente>(this.jsonURL+'menu')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
+  /* GET */
+
+  /**
+   * Método para obtener todas las páginas del menu.
+   * @return
+   */
+  getMenuOpts() {
+    return this.http.get<MenuOpts[]>(this.jsonURL+'menu');
   }
 
-  getComentarios(): Observable<Comentaries> {
-    return this.http
-      .get<Comentaries>(this.jsonURL+'comentarios')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
+  /**
+   * Método para obtener todas las categorías.
+   * @return
+   */
+  getCategories() {
+    return this.http.get<Category[]>(this.jsonURL+'categorias');
+  }
+  
+  /**
+   * Método para obtener todos los comentarios.
+   * @return
+   */
+  getComentarios() {
+    return this.http.get<Comentaries[]>(this.jsonURL+'comentarios');
+  }
+  
+  /**
+   * Método para obtener todas las series.
+   * @return
+   */
+  getSeries() {
+    return this.http.get<Serie[]>(this.jsonURL+'series');
+  }
+  
+  /**
+   * Método para obtener los datos de una categoría determinada.
+   * @param {number} idCat - ID de la categoría a obtener.
+   * @return
+   */
+  getCategory(idCat) {
+    return this.http.get<Category[]>(this.jsonURL+'categorias' + '/' + idCat);
   }
 
-  getSeries(): Observable<Serie> {
-    return this.http
-      .get<Serie>(this.jsonURL+'series')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
+  /** 
+   * Método para obtener los datos de una serie determinada.
+   * @param {number} idSer - ID de la serie a obtener.
+   * @return
+   */
+  getSerie(idSer) {
+    return this.http.get<Serie[]>(this.jsonURL+'series' + '/' + idSer);
   }
 
-  deleteSerie(id) {
-    return this.http.delete<Serie>(this.jsonURL+'series' + '/' + id, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
+  /* POST */
 
-  createSerie(serie): Observable<Serie> {
-    return this.http
-      .post<Serie>(this.jsonURL+'series', JSON.stringify(serie), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  getSerie(id): Observable<Serie> {
-    return this.http.get<Serie>(this.jsonURL+'series' + '/' + id)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  updateSerie(id,serie): Observable<Serie> {
-    return this.http.put<Serie>(this.jsonURL+'series' + '/' + id, JSON.stringify(serie), this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError)
-    )
-  }
-
-  getCategorias(): Observable<Category> {
-    return this.http
-      .get<Category>(this.jsonURL+'categorias')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  getCategory(id): Observable<Category> {
-    return this.http.get<Category>(this.jsonURL+'categorias' + '/' + id)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  updateCategory(id,category): Observable<Category> {
-    return this.http.put<Category>(this.jsonURL+'categorias' + '/' + id, JSON.stringify(category), this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError)
-    )
-  }
-
-  createCategory(category): Observable<Category> {
-    return this.http
-      .post<Category>(this.jsonURL+'categorias', JSON.stringify(category), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
-  deleteCategory(id) {
-    return this.http.delete<Category>(this.jsonURL+'categorias' + '/' + id, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
-
+  /**
+   * Método para crear un comentario y almacenarlo.
+   * @param {object} comentario - Todos los datos a guardar sobre el comentario nuevo.
+   * @return
+   */
   postComentario(comentario) {
-    return this.http.post<Comentaries>(this.jsonURL+'Comentaries', JSON.stringify(comentario), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
+    return this.http.post<Comentaries>(this.jsonURL+'comentarios', JSON.stringify(comentario), this.httpOptions);
   }
 
-  deleteComment(id) {
-    return this.http.delete<Comentaries>(this.jsonURL+'Comentaries' + '/' + id, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
+  /**
+   * Método para crear una categoría y almacenarla.
+   * @param {object} category - Todos los datos a guardar sobre la categoría nueva.
+   * @return
+   */
+  createCategory(category) {
+    return this.http.post<Category[]>(this.jsonURL+'categorias', JSON.stringify(category), this.httpOptions);
+  }
+
+  /**
+   * Método para crear una serie y almacenarla.
+   * @param {object} serie - Todos los datos a guardar sobre la serie nueva.
+   * @return
+   */
+  createSerie(serie) {
+    return this.http.post<Serie[]>(this.jsonURL+'series', JSON.stringify(serie), this.httpOptions);
+  }
+
+  /* PUT */
+
+  /** 
+   * Método para editar una categoría.
+   * @param {number} idCat - ID de la categoría a editar
+   * @param {object} category - Los datos nuevos de la categoría a editar
+   * @return
+   */
+  updateCategory(idCat,category) {
+    return this.http.put<Category[]>(this.jsonURL+'categorias' + '/' + idCat, JSON.stringify(category), this.httpOptions);
+  }
+
+  /**
+   * Método para editar una serie.
+   * @param {number} idSer - ID de la serie a editar.
+   * @param {object} serie - Los datos nuevos de la serie a editar.
+   * @return
+   */
+  updateSerie(idSer,serie) {
+    return this.http.put<Serie[]>(this.jsonURL+'series' + '/' + idSer, JSON.stringify(serie), this.httpOptions);
+  }
+
+  /* DELETE */
+
+  /** 
+   * Método para eliminar una serie.
+   * @param {number} idSer - ID de la serie a eliminar.
+   * @return
+   */
+  deleteSerie(idSer) {
+    return this.http.delete<Serie[]>(this.jsonURL+'series' + '/' + idSer, this.httpOptions);
+  }
+
+  /**
+   * Método para eliminar una categoría.
+   * @param {number} idCat - ID de la categoría a eliminar.
+   * @return
+   */
+  deleteCategory(idCat) {
+    return this.http.delete<Category[]>(this.jsonURL+'categorias' + '/' + idCat, this.httpOptions);
+  }
+
+  /**
+   * Método para eliminar un comentario.
+   * @param {number} idCom - ID del comentario a eliminar.
+   * @return
+   */
+  deleteComment(idCom) {
+    return this.http.delete<Comentaries[]>(this.jsonURL+'comentarios' + '/' + idCom, this.httpOptions);
   }
 }
