@@ -29,12 +29,6 @@ export class HomePage implements OnInit {
     /* leo el JSON de las series y lo guardo directamente en un array */
     this.dataService.getSeries().subscribe(res => {
       this.series = res;
-      /* Ordeno las series de más recientes a más antiguas */
-      this.series.sort((a,b): any => {
-            if (a['year'] < b['year']) return 1;
-            if (a['year'] > b['year']) return -1;
-            return 0;
-          });
       this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en home.page.html
     });
   }

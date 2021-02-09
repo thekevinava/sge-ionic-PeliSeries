@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Category, MenuOpts } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
-import { UserData } from 'src/app/services/userdata.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,15 +17,12 @@ export class MenuComponent implements OnInit {
   components: Observable<MenuOpts[]>;
   categories: Observable<Category[]>;
 
-  constructor(private dataService: DataService, private userData: UserData, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     /* Al inicializar llamo las diferentes funciones */
     this.getComponents(); 
     this.getCategories();
-
-    this.checkLoginStatus();
-    this.listenForLoginEvents();
   }
 
   /** 
@@ -41,49 +37,6 @@ export class MenuComponent implements OnInit {
    */
   getCategories() {
     this.categories = this.dataService.getCategories();
-  }
-
-  /* ----- EXTRA ----- */
-
-  /** 
-   * Compruebo si estoy logueado 
-   */
-  checkLoginStatus() {
-    return this.userData.isLoggedIn().then(loggedIn => {
-      return this.updateLoggedInStatus(loggedIn); 
-    });
-  }
-
-  /** 
-   * Seteo si estoy logueado o no 
-   */
-  updateLoggedInStatus(loggedIn: boolean) {
-    setTimeout(() => {
-      this.loggedIn = loggedIn;
-    }, 300);
-  }
-
-  /** 
-   * Comprueba si está logueado o no 
-   */
-  listenForLoginEvents() {
-    
-    window.addEventListener('user:login', () => {
-      this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener('user:logout', () => {
-      this.updateLoggedInStatus(false);
-    });
-  }
-
-  /** 
-   * Función para desconectarse 
-   */
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/'); // Redirecciona a la ruta /
-    });
   }
 
 }

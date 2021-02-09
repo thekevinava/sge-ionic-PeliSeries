@@ -12,13 +12,13 @@ export interface MenuOpts {
 
 /**
  * Interfaz para las categorías.
- * @param {number} id - ID de la categoría.
+ * @param {string} id - ID de la categoría.
  * @param {string} slug - Ruta de la categoría.
  * @param {string} name - Nombre de la categoría.
  * @param {string} image - Icono a mostrar en la categoría.
  */
 export interface Category {
-    id: number;
+    id: string;
     slug: string;
     name: string;
     image: string;
@@ -26,7 +26,7 @@ export interface Category {
 
 /**
  * Interfaz para las series.
- * @param {number} id - ID de la serie.
+ * @param {string} id - ID de la serie.
  * @param {string} slug - Ruta de la serie.
  * @param {string} title - Título de la serie.
  * @param {number} year - Año de estreno de la serie.
@@ -37,7 +37,7 @@ export interface Category {
  * @param {object} images - Array con las diferentes imagenes de la serie.
  */
 export interface Serie {
-    id: number;
+    id: string;
     slug: string;
     title: string;
     year: number;

@@ -1,8 +1,13 @@
 [
     {
-        "icon": "skull-outline",
+        "icon": "home-outline",
         "name": "Inicio",
         "redirectTo": "/home"
+    },
+    {
+        "icon": "list-outline",
+        "name": "Categorias",
+        "redirectTo": "/categories"
     },
     {
         "icon": "information-circle-outline",

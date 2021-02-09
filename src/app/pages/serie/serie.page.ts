@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
-import { UserData } from 'src/app/services/userdata.service';
 
 @Component({
   selector: 'app-serie',
@@ -10,34 +9,22 @@ import { UserData } from 'src/app/services/userdata.service';
   styleUrls: ['./serie.page.scss'],
 })
 export class SeriePage implements OnInit {
-  /**
-   * @param {any} username - Información acerca del usuario si está logueado
-   */
-  username: any;
 
-  /**
-   * @param {any} catSlug - 
-   */
   catSlug: any;
 
-  series: any;
   serie: any;
   categorias: any;
 
   /**
    * Array relacionado con el usuario que escribe un comentario.
-   * @param {string} slug - URL de la serie que se va a comentar.
    * @param {string} email - Email del usuario que quiere poner un comentario.
-   * @param {number} puntuacion - Puntuación obligatoria a dicha serie.
-   * @param {string} comentario - Comentario a dicha serie.
-   * @param {string} fecha - Fecha de publicación del comentario.
+   * @param {number} rating - Puntuación obligatoria a dicha serie.
+   * @param {string} message - Comentario a dicha serie.
    */
   usuario = {
-    slug: null,
     email: null,
-    puntuacion: null,
-    comentario: null,
-    fecha: Date.now()
+    rating: null,
+    message: null
   };
 
   puntuaciones: any;
@@ -63,31 +50,22 @@ export class SeriePage implements OnInit {
   cardComentarios = true;
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private alertCtrl: AlertController,
-    private toastController: ToastController, private userData: UserData) {
+    private toastController: ToastController) {
     this.categorias = [];
-    this.series = [];
     this.puntuaciones = [];
   }
 
   ngOnInit() {
-    this.getUsername();
-
     /* Guardo las categorías. */
     this.dataService.getCategories().subscribe(res => {
       this.categorias = res;
     });
 
-    /* Recojo las series del JSON. */
-    this.dataService.getSeries().subscribe(res => {
-      const serieSlug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo series.routing.module.
-      this.series = res; // Guardo las series.
-
-      if (this.series) {
-        for (let i = 0; i < this.series.length; i++) {
-          if (this.series[i].slug === serieSlug) return this.serie = this.series[i]; // Guardo los datos de la serie requerida.
-        }
-      }
+    const serieSlug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo series.routing.module.
+    this.dataService.getSerie(serieSlug).subscribe(res => {
+      this.serie = res; // Guardo la serie.
     });
+
     this.getComentarios();
   }
 
@@ -95,27 +73,16 @@ export class SeriePage implements OnInit {
    * Obtiene los comentarios ordenados de recientes a antiguos.
    */
   getComentarios () {
-    this.dataService.getComentarios().subscribe(res => {
-      this.puntuaciones = res;
-      for (let i = 0; i < this.puntuaciones.length; i++) {
-        if (this.puntuaciones[i].slug === this.serie.slug) {
-          this.comentariosSerie.push(this.puntuaciones[i]);
-        }
-      }
+    const slug = this.route.snapshot.paramMap.get('serieSlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo series.routing.module.
+    console.log(slug)
+    this.dataService.getComentarios(slug).subscribe(res => {
+      this.comentariosSerie = res;
+      /* Ordeno los comentarios */
       this.comentariosSerie.sort((a, b): any => {
-        if (a['fecha'] < b['fecha']) return 1;
-        if (a['fecha'] > b['fecha']) return -1;
+        if (a['date'] < b['date']) return 1;
+        if (a['date'] > b['date']) return -1;
         return 0;
       });
-    });
-  }
-
-  /**
-   * Función para comprobar si se está logueado o no.
-   */
-  getUsername() {
-    this.userData.getUsername().then((username) => {
-      this.username = username;
     });
   }
 
@@ -151,21 +118,18 @@ export class SeriePage implements OnInit {
       return 0;
     });
 
-    this.usuario.slug = slugSerie; // Guardo el slug de la serie en el Array del comentario.
 
     /* Reinicio el array de comentarios y los vuelvo a cargar una vez guardados por si estas logueado y deseas eliminar un comentario en el mismo momento de publicarlo. */
-    this.dataService.postComentario(this.usuario).subscribe(() => {
+    this.dataService.postComentario(slugSerie,this.usuario).subscribe(() => {
       this.comentariosSerie = []; // Reinicio el array.
       this.getComentarios(); // Recargo la lista de los comentarios.
     });
 
     /* Reinicio el formulario */
     this.usuario = {
-      slug: null,
       email: null,
-      puntuacion: null,
-      comentario: null,
-      fecha: Date.now()
+      rating: null,
+      message: null
     };
     
     this.visualizaciones(false, true, true); // Una vez enviado el comentario, muestro la página de la ficha de la película.
@@ -216,22 +180,10 @@ export class SeriePage implements OnInit {
     if (this.comentariosSerie.length > 0) {
       let total = 0;
       for (let i = 0; i < this.comentariosSerie.length; i++) {
-        total += this.comentariosSerie[i].puntuacion;
+        total += this.comentariosSerie[i].rating;
       }
       return total / this.comentariosSerie.length;
     }
     else return "Todavía no se ha puntuado";
-  }
-
-  /**
-   * Función para eliminar un comentario de una serie y actualizar la lista de comentarios nuevamente.
-   * @param {object} item Comentario a eliminar.
-   */
-  deleteComment(item) {
-    this.dataService.deleteComment(item.id).subscribe(res => {
-      this.comentariosSerie = []; // Reinicio el array
-      this.getComentarios(); // Recargo la lista de los comentarios
-      this.mostrarToast('Has eliminado el comentario correctamente.','warning');
-    });
   }
 }

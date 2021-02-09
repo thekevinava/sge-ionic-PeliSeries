@@ -11,7 +11,7 @@ export class CategoryPage implements OnInit {
   slug: any; // Slug de la categoría mostrada en el card Serie
   categoria: any; // Los datos de la categoría a mostrar
   categorias: any; // Listado de categorías
-  
+
   series: any; // Listado de series
   seriesCategoria = []; // Listados de series de la categoria requerida
   seriesFinal = []; // Listado de series a mostrar con Infinite Scroll
@@ -25,55 +25,46 @@ export class CategoryPage implements OnInit {
   }
 
   ngOnInit() {
-    /* Recojo las categorías del JSON */
     this.dataService.getCategories().subscribe(res => {
-      const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module
-      this.categorias = res; // Guardo las categorías
+      this.categorias = res;
+    });
 
-      if (res) {
-        for (let i = 0; i<this.categorias.length;i++) {
-          if (this.categorias[i].slug === categorySlug) return this.categoria = this.categorias[i]; // Guardo los datos de la categoría requerida
-        }
-      }
+    const categorySlug = this.route.snapshot.paramMap.get('categorySlug'); //Recojo el enrutamiento necesario para la línea 16 del archivo categories-routing.module
+    this.dataService.getCategory(categorySlug).subscribe(res => {
+      this.categoria = res; // Guardo las categorías
     });
 
     /* Recojo las series del JSON*/
     this.dataService.getSeries().subscribe(res => {
       this.series = res; // Primero recojo las series
-      for (let i = 0; i<this.series.length;i++) {
-        for (let j = 0; j<this.series[i].categories.length;j++){
+      for (let i = 0; i < this.series.length; i++) {
+        for (let j = 0; j < this.series[i].categories.length; j++) {
           if (this.series[i].categories[j] == this.categoria.name) {
             this.seriesCategoria.push(this.series[i]); // Recojo las series que tengan la misma categoria
           }
         }
       }
-      /* Ordeno las series de más recientes a más antiguas */
-      this.seriesCategoria.sort((a,b): any => {
-        if (a['year'] < b['year']) return 1;
-        if (a['year'] > b['year']) return -1;
-        return 0;
-      });
       this.addMoreItems(); // Llamo a la variable que se encarga de publicar los elementos en category.page.html
     });
   }
 
-    /* Leo los datos del home.page.html respecto al Infinite Scroll */
-    loadData(event) {
-      setTimeout(() => {
-        console.log('Loaded'); 
-        this.addMoreItems(); // Cargo más datos si existen
-        event.target.complete(); // Completo la carga de datos
-        if (this.seriesCategoria.length === this.cuenta) event.target.disabled = true; // Si he completado la carga, desactivo el Infinite Scroll
-      }, 500);
+  /* Leo los datos del home.page.html respecto al Infinite Scroll */
+  loadData(event) {
+    setTimeout(() => {
+      console.log('Loaded');
+      this.addMoreItems(); // Cargo más datos si existen
+      event.target.complete(); // Completo la carga de datos
+      if (this.seriesCategoria.length === this.cuenta) event.target.disabled = true; // Si he completado la carga, desactivo el Infinite Scroll
+    }, 500);
+  }
+
+  addMoreItems() {
+    for (let i = 0; i < 4; i++) {
+      if (this.seriesCategoria.length === this.cuenta) return; // Si he completado la carga de datos, no añade más información innecesaria
+      this.seriesFinal.push(this.seriesCategoria[this.cuenta]);
+      this.cuenta++;
     }
-  
-    addMoreItems() {
-      for (let i = 0; i < 4; i++) {
-        if (this.seriesCategoria.length === this.cuenta) return; // Si he completado la carga de datos, no añade más información innecesaria
-        this.seriesFinal.push(this.seriesCategoria[this.cuenta]);
-        this.cuenta++;
-      }
-    }
+  }
 
   /* Función para poder pasar la ruta al chip de la categoría */
   mismaCategoria(cat) {

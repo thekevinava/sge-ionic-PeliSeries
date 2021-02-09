@@ -22,42 +22,6 @@ const routes: Routes = [
   {
     path: 'series',
     loadChildren: () => import('./pages/series/series.module').then( m => m.SeriesPageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'admin/home',
-    loadChildren: () => import('./pages/admin/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'admin/series-list',
-    loadChildren: () => import('./pages/admin/series-list/series-list.module').then( m => m.SeriesListPageModule)
-  },
-  {
-    path: 'admin/series-create',
-    loadChildren: () => import('./pages/admin/series-create/series-create.module').then( m => m.SeriesCreatePageModule)
-  },
-  {
-    path: 'admin/series-edit',
-    loadChildren: () => import('./pages/admin/series-edit/series-edit.module').then( m => m.SeriesEditPageModule)
-  },
-  {
-    path: 'admin/category-create',
-    loadChildren: () => import('./pages/admin/category-create/category-create.module').then( m => m.CategoryCreatePageModule)
-  },
-  {
-    path: 'admin/category-list',
-    loadChildren: () => import('./pages/admin/category-list/category-list.module').then( m => m.CategoryListPageModule)
-  },
-  {
-    path: 'admin/category-edit',
-    loadChildren: () => import('./pages/admin/category-edit/category-edit.module').then( m => m.CategoryEditPageModule)
-  },
-  {
-    path: 'admin/comments',
-    loadChildren: () => import('./pages/admin/comments/comments.module').then( m => m.CommentsPageModule)
   }
 ];
 
