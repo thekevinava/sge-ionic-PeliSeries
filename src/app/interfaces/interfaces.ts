@@ -12,13 +12,11 @@ export interface MenuOpts {
 
 /**
  * Interfaz para las categorías.
- * @param {string} id - ID de la categoría.
  * @param {string} slug - Ruta de la categoría.
  * @param {string} name - Nombre de la categoría.
  * @param {string} image - Icono a mostrar en la categoría.
  */
 export interface Category {
-    id: string;
     slug: string;
     name: string;
     image: string;
@@ -26,7 +24,6 @@ export interface Category {
 
 /**
  * Interfaz para las series.
- * @param {string} id - ID de la serie.
  * @param {string} slug - Ruta de la serie.
  * @param {string} title - Título de la serie.
  * @param {number} year - Año de estreno de la serie.
@@ -35,9 +32,9 @@ export interface Category {
  * @param {number} episodes - Número de episodios totales que tiene la serie.
  * @param {object} categories - Array con las diferentes categorías de la serie.
  * @param {object} images - Array con las diferentes imagenes de la serie.
+ * @param {object} comments - Array con los ObjectId de los comentarios
  */
 export interface Serie {
-    id: string;
     slug: string;
     title: string;
     year: number;
@@ -46,22 +43,21 @@ export interface Serie {
     episodes: number;
     categories: object;
     images: object;
+    comments: object;
 }
 
 /**
  * Interfaz para los comentarios.
- * @param {number} id - El ID definido para dicho comentario.
- * @param {string} slug - La ruta de la serie puntuada.
  * @param {string} email - El email del usuario que puntua la serie.
- * @param {number} puntuacion - Puntuación obtenida a dicha serie por el usuario.
- * @param {string} comentario - Comentario opcional por dicho usuario.
- * @param {string} fecha - Fecha de la publicación de dicho comentario.
+ * @param {number} rating - Puntuación obtenida a dicha serie por el usuario.
+ * @param {string} message - Comentario opcional por dicho usuario.
+ * @param {any} serie - ObjectId de la serie en la que se publica el comentario.
+ * @param {Date} date - Fecha de la publicación de dicho comentario.
  */
 export interface Comentaries {
-    id: number;
-    slug: string;
     email: string;
-    puntuacion: number;
-    comentario: string;
-    fecha: string;
+    rating: number;
+    message: string;
+    serie: any;
+    date: Date;
 }
